@@ -4,17 +4,20 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructura.DataBase
 {
-    public class DbContext : IdentityDbContext<Usuarios>
+    public class DatabaseContext : IdentityDbContext<Usuario>
     {
-        public DbSet<Orden> Ordenes { get; set; }
-        public DbSet<AsignacionTecnico> AsignacionTecnicos { get; set; }
+        
+        public DbSet<Usuario> Usuarios { get; set; }
+        /*public DbSet<Orden> Ordenes { get; set; }
+        public DbSet<AsignacionTecnico> AsignacionTecnicos { get; set; }*/
 
-        public DbContext(DbContextOptions<DbContext> options)
+        public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)
         {
+
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder); 
 
@@ -25,6 +28,6 @@ namespace Infraestructura.DataBase
                 .HasOne(at => at.Orden)
                 .WithMany(o => o.AsignacionTecnicos)
                 .HasForeignKey(at => at.NumeroOrden);
-        }
+        }*/
     }
 }

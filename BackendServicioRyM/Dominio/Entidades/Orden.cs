@@ -17,7 +17,7 @@ namespace Dominio.Entidades
 
         // Relación con mecánico asignado
         public string? MecanicoAsignadoId { get; set; }
-        public Usuarios? MecanicoAsignado { get; set; }
+        public Usuario? MecanicoAsignado { get; set; }
 
         // Relación con asignación de técnicos
         public ICollection<AsignacionTecnico> AsignacionTecnicos { get; set; }
