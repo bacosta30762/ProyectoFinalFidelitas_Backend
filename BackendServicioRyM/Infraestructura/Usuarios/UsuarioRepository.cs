@@ -18,7 +18,8 @@ namespace Infraestructura.Usuarios
 
         public async Task<Resultado> RegistrarUsuarioAsync(Usuario usuario, string password)
         {
-            
+            usuario.Activo = true;
+
             var result = await _userManager.CreateAsync(usuario, password);
 
             if (result.Succeeded)

@@ -1,6 +1,6 @@
 ﻿namespace Dominio.Interfaces
 {
-    public interface IRoleService
+    public interface IRoleRepository
     {
         Task CrearRolesIniciales();
         Task AsignarRolAUsuario(string userId, string roleName);

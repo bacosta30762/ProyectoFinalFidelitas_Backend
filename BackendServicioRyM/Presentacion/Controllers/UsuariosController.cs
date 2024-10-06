@@ -22,5 +22,18 @@ namespace Presentacion.Controllers
 
             return Ok(resultado);
         }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginDto loginDto) 
+        {
+            var token = await _usuariosService.LoginAsync(loginDto); 
+
+            if (string.IsNullOrEmpty(token))
+            {
+                return Unauthorized(); 
+            }
+
+            return Ok(new { Token = token }); 
+        }
     }
 }

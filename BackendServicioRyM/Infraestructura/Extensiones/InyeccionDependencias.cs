@@ -1,5 +1,6 @@
 ﻿using Dominio.Entidades;
 using Dominio.Interfaces;
+using Dominio.Repositorios;
 using Infraestructura.DataBase;
 using Infraestructura.Usuarios;
 using Microsoft.AspNetCore.Identity;
@@ -16,6 +17,8 @@ namespace Infraestructura.Extensiones
             services.AddDbContext<DatabaseContext>(config => config.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentityCore<Usuario>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IAutenticacionRepository, AutenticacionRepository>(); 
+            services.AddScoped<IJwtRepository, JwtService>();
         }
     }
 }

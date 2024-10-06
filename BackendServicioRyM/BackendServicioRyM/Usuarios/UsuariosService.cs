@@ -4,7 +4,9 @@ using AutoMapper;
 using Dominio.Comun;
 using Dominio.Entidades;
 using Dominio.Interfaces;
+using Dominio.Repositorios;
 using FluentValidation;
+using Microsoft.AspNetCore.Authentication;
 
 namespace Aplicacion.Usuarios
 {
@@ -13,12 +15,14 @@ namespace Aplicacion.Usuarios
         private readonly IUsuarioRepository _usuariosRepository;
         private readonly IValidator<AgregarUsuarioDto> _validador;
         private readonly IMapper _mapper;
+        private readonly IAutenticacionRepository _autenticacionRepository;
 
-        public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper)
+        public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper, IAutenticacionRepository autenticacionRepository)
         {
             _usuariosRepository = usuariosRepository;
             _validador = validador;
             _mapper = mapper;
+            _autenticacionRepository = autenticacionRepository;
         }
 
         public async Task<Resultado> AgregarUsuarioAsync(AgregarUsuarioDto dto)
@@ -34,6 +38,11 @@ namespace Aplicacion.Usuarios
 
             return resultado;
 
+        }
+
+        public async Task<string> LoginAsync(LoginDto loginDto)
+        {
+            return await _autenticacionRepository.LoginAsync(loginDto.Email, loginDto.Password);
         }
     }
 
