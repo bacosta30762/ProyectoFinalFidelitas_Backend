@@ -1,4 +1,4 @@
-using Infraestructura.Extensiones;
+using Aplicacion.Extensiones;
 using Aplicacion.Extensiones;
 
 
@@ -23,6 +23,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseAuthentication();
 
 app.UseAuthorization();
 

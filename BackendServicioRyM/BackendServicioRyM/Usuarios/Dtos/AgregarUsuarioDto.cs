@@ -6,7 +6,6 @@
         string Contraseña, 
         string Nombre, 
         string Apellidos, 
-        string Cedula,
-        bool Activo
+        string Cedula
         );
 }

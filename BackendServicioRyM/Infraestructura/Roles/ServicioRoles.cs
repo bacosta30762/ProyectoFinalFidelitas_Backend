@@ -2,7 +2,7 @@
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace Infraestructura.Roles
+namespace Aplicacion.Roles
 {
     public class ServicioRoles : IRoleRepository
     {

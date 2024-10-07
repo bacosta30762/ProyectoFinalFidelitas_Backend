@@ -1,11 +1,11 @@
 ﻿using Aplicacion.Usuarios.Dtos;
 using Dominio.Comun;
 
-namespace Aplicacion.Servicios
+namespace Aplicacion.Interfaces
 {
     public interface IUsuariosService
     {
         Task<Resultado> AgregarUsuarioAsync(AgregarUsuarioDto dto);
-        Task<string> LoginAsync(LoginDto loginDto);
+        Task<Resultado<RespuestaLoginDto>> LoginAsync(LoginDto loginDto);
     }
 }

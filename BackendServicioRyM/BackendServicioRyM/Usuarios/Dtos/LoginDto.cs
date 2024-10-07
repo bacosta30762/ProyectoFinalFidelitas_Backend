@@ -5,4 +5,9 @@
         string Email,
         string Password
     );
+
+    public record RespuestaLoginDto
+    (
+      string Token  
+    );
 }

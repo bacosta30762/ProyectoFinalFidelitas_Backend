@@ -3,7 +3,7 @@ using Dominio.Entidades;
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace Infraestructura.Usuarios
+namespace Aplicacion.Usuarios
 {
     public class UsuarioRepository : IUsuarioRepository
     {
@@ -18,8 +18,6 @@ namespace Infraestructura.Usuarios
 
         public async Task<Resultado> RegistrarUsuarioAsync(Usuario usuario, string password)
         {
-            usuario.Activo = true;
-
             var result = await _userManager.CreateAsync(usuario, password);
 
             if (result.Succeeded)
@@ -38,6 +36,24 @@ namespace Infraestructura.Usuarios
             return Resultado.Fallido(result.Errors.Select(e => e.Description));
         }
 
-        
+        public async Task<Resultado<Usuario>> AutenticarUsuarioAsync(string correo, string password)
+        {
+            var usuario = await _userManager.FindByNameAsync(correo);
+            if (usuario == null || !await _userManager.CheckPasswordAsync(usuario, password))
+            {
+                return Resultado<Usuario>.Fallido(["Correo y contraseña incorrectos"]);
+            }
+
+            return Resultado<Usuario>.Exitoso(usuario);
+        }
+
+        public async Task<IEnumerable<string>> ObtenerRolesAsync(Usuario usuario)
+        {
+            var roles = await _userManager.GetRolesAsync(usuario);
+          
+            return roles;
+        }
+
+
     }
 }

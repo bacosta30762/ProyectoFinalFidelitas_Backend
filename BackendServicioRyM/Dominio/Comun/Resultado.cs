@@ -18,10 +18,20 @@
 
     }
 
-    public class Resultado<Tipo> : Resultado
+    public class Resultado<T> : Resultado
     {
-        public Tipo? Valor { get; set; }
+        public T Valor { get; set; } = default;
 
-        
+        public static Resultado<T> Exitoso(T valor)
+        {
+            return new Resultado<T> { FueExitoso = true, Valor = valor };
+        }
+
+        public static new Resultado<T> Fallido(IEnumerable<string> errores)
+        {
+            return new Resultado<T> { FueExitoso = false, Errores = errores };
+        }
+
+
     }
 }
