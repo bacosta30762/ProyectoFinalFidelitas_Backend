@@ -1,21 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\",
+  "WorkspaceRootPath": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\infraestructura\\database\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|c:\\fide\\dise\u00F1o y desarrollo de sistemas\\proyecto\\proyectofinalfidelitas_backend\\backendserviciorym\\infraestructura\\database\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\database\\dbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\entidades\\asignaciontecnico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\fide\\dise\u00F1o y desarrollo de sistemas\\proyecto\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\entidades\\asignaciontecnico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|solutionrelative:dominio\\entidades\\asignaciontecnico.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\entidades\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\fide\\dise\u00F1o y desarrollo de sistemas\\proyecto\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\entidades\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|solutionrelative:dominio\\entidades\\usuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\entidades\\orden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\fide\\dise\u00F1o y desarrollo de sistemas\\proyecto\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\entidades\\orden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|solutionrelative:dominio\\entidades\\orden.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -26,11 +26,39 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 12,
           "Children": [
             {
               "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{a83394e3-39c2-4678-a3c8-364b69d78fd3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             },
             {
               "$type": "Bookmark",
@@ -49,22 +77,14 @@
               "Name": "ST:130:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
-            },
-            {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "DBContext.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\DataBase\\DBContext.cs",
+              "DocumentMoniker": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\DataBase\\DBContext.cs",
               "RelativeDocumentMoniker": "Infraestructura\\DataBase\\DBContext.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\DataBase\\DBContext.cs",
+              "ToolTip": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\DataBase\\DBContext.cs",
               "RelativeToolTip": "Infraestructura\\DataBase\\DBContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-30T22:42:08.624Z",
               "EditorCaption": ""
@@ -73,9 +93,9 @@
               "$type": "Document",
               "DocumentIndex": 1,
               "Title": "AsignacionTecnico.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\AsignacionTecnico.cs",
+              "DocumentMoniker": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\AsignacionTecnico.cs",
               "RelativeDocumentMoniker": "Dominio\\Entidades\\AsignacionTecnico.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\AsignacionTecnico.cs",
+              "ToolTip": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\AsignacionTecnico.cs",
               "RelativeToolTip": "Dominio\\Entidades\\AsignacionTecnico.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -85,9 +105,9 @@
               "$type": "Document",
               "DocumentIndex": 3,
               "Title": "Orden.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Orden.cs",
+              "DocumentMoniker": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Orden.cs",
               "RelativeDocumentMoniker": "Dominio\\Entidades\\Orden.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Orden.cs",
+              "ToolTip": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Orden.cs",
               "RelativeToolTip": "Dominio\\Entidades\\Orden.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -97,9 +117,9 @@
               "$type": "Document",
               "DocumentIndex": 2,
               "Title": "Usuarios.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Usuarios.cs",
+              "DocumentMoniker": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Usuarios.cs",
               "RelativeDocumentMoniker": "Dominio\\Entidades\\Usuarios.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Usuarios.cs",
+              "ToolTip": "C:\\Fide\\Dise\u00F1o y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Entidades\\Usuarios.cs",
               "RelativeToolTip": "Dominio\\Entidades\\Usuarios.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

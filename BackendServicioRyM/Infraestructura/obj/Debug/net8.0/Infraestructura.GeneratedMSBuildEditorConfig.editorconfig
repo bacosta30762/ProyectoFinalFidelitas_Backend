@@ -8,6 +8,6 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Infraestructura
-build_property.ProjectDir = C:\Users\Personal\Documents\GitHub\ProyectoFinalFidelitas_Backend\BackendServicioRyM\Infraestructura\
+build_property.ProjectDir = C:\Fide\Diseño y Desarrollo de Sistemas\Proyecto\ProyectoFinalFidelitas_Backend\BackendServicioRyM\Infraestructura\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

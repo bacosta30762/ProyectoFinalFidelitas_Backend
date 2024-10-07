@@ -833,19 +833,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Personal\\.nuget\\packages\\": {}
+    "C:\\Users\\sau15\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
+      "projectUniqueName": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
       "projectName": "Infraestructura",
-      "projectPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
-      "packagesPath": "C:\\Users\\Personal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\obj\\",
+      "projectPath": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
+      "packagesPath": "C:\\Users\\sau15\\.nuget\\packages\\",
+      "outputPath": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Personal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sau15\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -860,8 +860,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj": {
-              "projectPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj"
+            "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj": {
+              "projectPath": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj"
             }
           }
         }

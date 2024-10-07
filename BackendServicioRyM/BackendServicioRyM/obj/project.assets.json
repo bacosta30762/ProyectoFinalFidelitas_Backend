@@ -8,19 +8,19 @@
     "net8.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Personal\\.nuget\\packages\\": {}
+    "C:\\Users\\sau15\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Aplicacion.csproj",
+      "projectUniqueName": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Aplicacion.csproj",
       "projectName": "Aplicacion",
-      "projectPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Aplicacion.csproj",
-      "packagesPath": "C:\\Users\\Personal\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\obj\\",
+      "projectPath": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Aplicacion.csproj",
+      "packagesPath": "C:\\Users\\sau15\\.nuget\\packages\\",
+      "outputPath": "C:\\Fide\\Diseño y Desarrollo de Sistemas\\Proyecto\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Personal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sau15\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
