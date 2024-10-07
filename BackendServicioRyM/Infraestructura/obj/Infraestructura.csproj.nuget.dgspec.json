@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj": {}
+    "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj": {
+    "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj",
+        "projectUniqueName": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj",
         "projectName": "Dominio",
-        "projectPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj",
-        "packagesPath": "C:\\Users\\Personal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\obj\\",
+        "projectPath": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj",
+        "packagesPath": "C:\\Users\\hudso\\.nuget\\packages\\",
+        "outputPath": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Personal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hudso\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -67,21 +67,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj": {
+    "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
+        "projectUniqueName": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
         "projectName": "Infraestructura",
-        "projectPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
-        "packagesPath": "C:\\Users\\Personal\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\obj\\",
+        "projectPath": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Infraestructura.csproj",
+        "packagesPath": "C:\\Users\\hudso\\.nuget\\packages\\",
+        "outputPath": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Personal\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\hudso\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -96,8 +96,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj": {
-                "projectPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj"
+              "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj": {
+                "projectPath": "D:\\3Cuatri2024\\DisenoDesarrollo\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Dominio.csproj"
               }
             }
           }
@@ -144,7 +144,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
