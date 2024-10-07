@@ -1,5 +1,6 @@
-﻿using Aplicacion.Servicios;
+﻿using Aplicacion.Interfaces;
 using Aplicacion.Usuarios.Dtos;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentacion.Controllers
@@ -21,6 +22,25 @@ namespace Presentacion.Controllers
             var resultado = await _usuariosService.AgregarUsuarioAsync(dto);
 
             return Ok(resultado);
+        }
+
+        [HttpPost("Login")]
+        public async Task<IActionResult> Login(LoginDto loginDto) 
+        {
+            var respuestalogin = await _usuariosService.LoginAsync(loginDto);
+            if (!respuestalogin.FueExitoso)
+            {
+                return Unauthorized(respuestalogin.Errores);
+            }
+
+            return Ok(respuestalogin.Valor); 
+        }
+
+        [HttpGet("Privado")]
+        [Authorize(Roles = "Usuario")]
+        public async Task<IActionResult> Privado()
+        {
+           return Ok();
         }
     }
 }

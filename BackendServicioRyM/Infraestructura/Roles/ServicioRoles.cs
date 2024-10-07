@@ -2,9 +2,9 @@
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
-namespace Infraestructura.Roles
+namespace Aplicacion.Roles
 {
-    public class ServicioRoles : IRoleService
+    public class ServicioRoles : IRoleRepository
     {
         private readonly RoleManager<IdentityRole> _roleManager;
         private readonly UserManager<Usuario> _userManager;

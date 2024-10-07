@@ -1,4 +1,5 @@
-﻿using Aplicacion.Servicios;
+﻿using Aplicacion.Interfaces;
+using Aplicacion.Servicios;
 using Aplicacion.Usuarios;
 using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
@@ -13,6 +14,7 @@ namespace Aplicacion.Extensiones
             services.AddValidatorsFromAssembly(Assembly.GetExecutingAssembly());
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IUsuariosService, UsuariosService>();
+            services.AddScoped<IJwtService, JwtService>();
         }
     }
 }
