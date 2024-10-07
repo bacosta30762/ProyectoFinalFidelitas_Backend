@@ -2,6 +2,7 @@
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aplicacion.Usuarios
 {
@@ -52,6 +53,32 @@ namespace Aplicacion.Usuarios
             var roles = await _userManager.GetRolesAsync(usuario);
           
             return roles;
+        }
+
+        public async Task<Usuario?> ObtenerPorCedulaAsync(string cedula)
+        {
+            return await _userManager.Users.FirstOrDefaultAsync(u => u.Cedula == cedula);
+        }
+
+        public async Task<Resultado> ActualizarAsync(Usuario usuario)
+        {
+            var result = await _userManager.UpdateAsync(usuario);
+            return result.Succeeded ? Resultado.Exitoso() : Resultado.Fallido(result.Errors.Select(e => e.Description));
+        }
+
+        public async Task<Resultado> EliminarAsync(Usuario usuario)
+        {
+            var result = await _userManager.DeleteAsync(usuario);
+            return result.Succeeded ? Resultado.Exitoso() : Resultado.Fallido(result.Errors.Select(e => e.Description));
+        }
+
+        public async Task<Resultado> AsignarRolAsync(string cedula, string roleName)
+        {
+            var usuario = await ObtenerPorCedulaAsync(cedula);
+            if (usuario == null) return Resultado.Fallido(new[] { "Usuario no encontrado" });
+
+            var result = await _userManager.AddToRoleAsync(usuario, roleName);
+            return result.Succeeded ? Resultado.Exitoso() : Resultado.Fallido(result.Errors.Select(e => e.Description));
         }
 
 

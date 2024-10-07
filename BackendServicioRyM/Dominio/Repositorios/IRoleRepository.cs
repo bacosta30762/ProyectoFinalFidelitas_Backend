@@ -1,9 +1,11 @@
-﻿namespace Dominio.Interfaces
+﻿using Dominio.Comun;
+
+namespace Dominio.Interfaces
 {
     public interface IRoleRepository
     {
         Task CrearRolesIniciales();
-        Task AsignarRolAUsuario(string userId, string roleName);
+        Task<Resultado> AsignarRolAUsuario(string userId, string roleName);
         Task<bool> EsUsuarioEnRol(string userId, string roleName);
     }
 }

@@ -42,5 +42,33 @@ namespace Presentacion.Controllers
         {
            return Ok();
         }
+
+        [HttpPut("Actualizar/{cedula}")]
+        public async Task<IActionResult> ActualizarUsuario([FromRoute]string cedula, [FromBody]ActualizarUsuarioDto dto)
+        {
+            var resultado = await _usuariosService.ActualizarUsuarioAsync(dto);
+            return Ok(resultado);
+        }
+
+        [HttpDelete("Eliminar")]
+        public async Task<IActionResult> EliminarUsuario(string cedula)
+        {
+            var usuario = await _usuariosService.ObtenerPorCedulaAsync(cedula); 
+            if (usuario == null)
+            {
+                return NotFound(new { mensaje = "Usuario no encontrado" });
+            }
+
+            var resultado = await _usuariosService.EliminarUsuarioAsync(usuario.Cedula);
+            return Ok(resultado);
+        }
+
+        [HttpPost("AsignarRol")]
+        public async Task<IActionResult> AsignarRol(AsignarRolDto dto)
+        {
+            var resultado = await _usuariosService.AsignarRolAsync(dto);
+            return Ok(resultado);
+        }
+
     }
 }

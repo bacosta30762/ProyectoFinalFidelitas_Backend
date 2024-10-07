@@ -3,76 +3,36 @@
   "WorkspaceRootPath": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\presentacion\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\servicios\\usuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\servicios\\usuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\infraestructura\\extensiones\\inyecciondependencias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\extensiones\\inyecciondependencias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\servicios\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\servicios\\jwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\repositorios\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|solutionrelative:dominio\\repositorios\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\extensiones\\inyecciondependencias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\extensiones\\inyecciondependencias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\interfaces\\iusuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\interfaces\\iusuariosservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\repositorios\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|solutionrelative:dominio\\repositorios\\iusuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\interfaces\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\interfaces\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\dominio\\comun\\resultado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8F11544E-3053-42F9-9F69-4262A47E74D9}|Dominio\\Dominio.csproj|solutionrelative:dominio\\comun\\resultado.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\usuarios\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\usuarios\\dtos\\logindto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\usuarios\\dtos\\agregarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\usuarios\\dtos\\agregarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\infraestructura\\usuarios\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\usuarios\\usuariorepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\presentacion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\presentacion\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\presentacion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{672F9893-E9DB-4490-BC4C-ED8650BCDFF3}|Presentacion\\Presentacion.csproj|solutionrelative:presentacion\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\infraestructura\\roles\\servicioroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{81604B7E-5003-44CA-80F7-6B68412E67DC}|Infraestructura\\Infraestructura.csproj|solutionrelative:infraestructura\\roles\\servicioroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\usuarios\\dtos\\actualizarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\usuarios\\dtos\\actualizarusuariodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Servicios\\JwtService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Infraestructura\\Servicios\\JwtService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\usuarios\\validadores\\actualizarusuariovalidador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\usuarios\\validadores\\actualizarusuariovalidador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IJwtService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Dominio\\Repositorios\\IJwtService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\usuarios\\validadores\\agregarusuariovalidador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\usuarios\\validadores\\agregarusuariovalidador.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\extensiones\\inyecciondependencias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\extensiones\\inyecciondependencias.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|c:\\users\\personal\\documents\\github\\proyectofinalfidelitas_backend\\backendserviciorym\\backendserviciorym\\usuarios\\mapeadores\\mapeadorusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{195BAB20-6B5F-487C-9275-A11909BF6C6C}|BackendServicioRyM\\Aplicacion.csproj|solutionrelative:backendserviciorym\\usuarios\\mapeadores\\mapeadorusuarios.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -82,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 8,
           "Children": [
             {
               "$type": "Bookmark",
@@ -114,232 +74,107 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "InyeccionDependencias.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:38:12.339Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "UsuariosService.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Servicios\\UsuariosService.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Servicios\\UsuariosService.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Servicios\\UsuariosService.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Servicios\\UsuariosService.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAA7wCkAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:24:15.725Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "IUsuariosService.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Interfaces\\IUsuariosService.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Interfaces\\IUsuariosService.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Interfaces\\IUsuariosService.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Interfaces\\IUsuariosService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:24:11.171Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IUsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IUsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Dominio\\Repositorios\\IUsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IUsuarioRepository.cs",
-              "RelativeToolTip": "Dominio\\Repositorios\\IUsuarioRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:23:54.191Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "IJwtService.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Interfaces\\IJwtService.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Interfaces\\IJwtService.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Interfaces\\IJwtService.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Interfaces\\IJwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:59:32.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
               "Title": "UsuariosController.cs",
               "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Presentacion\\Controllers\\UsuariosController.cs",
               "RelativeDocumentMoniker": "Presentacion\\Controllers\\UsuariosController.cs",
               "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Presentacion\\Controllers\\UsuariosController.cs",
               "RelativeToolTip": "Presentacion\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwB0AAAA9AAAAAAAAAA==",
+              "ViewState": "AgIAABUAAAAAAAAAAAAowDIAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:30:12.261Z",
+              "WhenOpened": "2024-10-07T22:56:14.295Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "InyeccionDependencias.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Extensiones\\InyeccionDependencias.cs",
-              "RelativeDocumentMoniker": "Infraestructura\\Extensiones\\InyeccionDependencias.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Extensiones\\InyeccionDependencias.cs",
-              "RelativeToolTip": "Infraestructura\\Extensiones\\InyeccionDependencias.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAApAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "UsuariosService.cs",
+              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Servicios\\UsuariosService.cs",
+              "RelativeDocumentMoniker": "BackendServicioRyM\\Servicios\\UsuariosService.cs",
+              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Servicios\\UsuariosService.cs",
+              "RelativeToolTip": "BackendServicioRyM\\Servicios\\UsuariosService.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAwwFEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:20:16.238Z",
+              "WhenOpened": "2024-10-07T22:54:06.418Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AgregarUsuarioValidador.cs",
+              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Validadores\\AgregarUsuarioValidador.cs",
+              "RelativeDocumentMoniker": "BackendServicioRyM\\Usuarios\\Validadores\\AgregarUsuarioValidador.cs",
+              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Validadores\\AgregarUsuarioValidador.cs",
+              "RelativeToolTip": "BackendServicioRyM\\Usuarios\\Validadores\\AgregarUsuarioValidador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T22:52:50.93Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "InyeccionDependencias.cs",
+              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
+              "RelativeDocumentMoniker": "BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
+              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
+              "RelativeToolTip": "BackendServicioRyM\\Extensiones\\InyeccionDependencias.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-10-07T22:52:10.243Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "IRoleRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IRoleRepository.cs",
-              "RelativeDocumentMoniker": "Dominio\\Repositorios\\IRoleRepository.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IRoleRepository.cs",
-              "RelativeToolTip": "Dominio\\Repositorios\\IRoleRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "ActualizarUsuarioValidador.cs",
+              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Validadores\\ActualizarUsuarioValidador.cs",
+              "RelativeDocumentMoniker": "BackendServicioRyM\\Usuarios\\Validadores\\ActualizarUsuarioValidador.cs",
+              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Validadores\\ActualizarUsuarioValidador.cs",
+              "RelativeToolTip": "BackendServicioRyM\\Usuarios\\Validadores\\ActualizarUsuarioValidador.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:04:49.74Z",
+              "WhenOpened": "2024-10-07T22:51:55.279Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "Resultado.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Comun\\Resultado.cs",
-              "RelativeDocumentMoniker": "Dominio\\Comun\\Resultado.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Comun\\Resultado.cs",
-              "RelativeToolTip": "Dominio\\Comun\\Resultado.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAA1wCUAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "MapeadorUsuarios.cs",
+              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Mapeadores\\MapeadorUsuarios.cs",
+              "RelativeDocumentMoniker": "BackendServicioRyM\\Usuarios\\Mapeadores\\MapeadorUsuarios.cs",
+              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Mapeadores\\MapeadorUsuarios.cs",
+              "RelativeToolTip": "BackendServicioRyM\\Usuarios\\Mapeadores\\MapeadorUsuarios.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:12:37.799Z",
+              "WhenOpened": "2024-10-07T22:51:37.376Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "JwtService.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Servicios\\JwtService.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Servicios\\JwtService.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Servicios\\JwtService.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Servicios\\JwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
+              "Title": "ActualizarUsuarioDto.cs",
+              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Dtos\\ActualizarUsuarioDto.cs",
+              "RelativeDocumentMoniker": "BackendServicioRyM\\Usuarios\\Dtos\\ActualizarUsuarioDto.cs",
+              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Dtos\\ActualizarUsuarioDto.cs",
+              "RelativeToolTip": "BackendServicioRyM\\Usuarios\\Dtos\\ActualizarUsuarioDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:56:15.627Z",
+              "WhenOpened": "2024-10-07T22:51:29.21Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "LoginDto.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Dtos\\LoginDto.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Usuarios\\Dtos\\LoginDto.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Dtos\\LoginDto.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Usuarios\\Dtos\\LoginDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:26:47.359Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AgregarUsuarioDto.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Dtos\\AgregarUsuarioDto.cs",
-              "RelativeDocumentMoniker": "BackendServicioRyM\\Usuarios\\Dtos\\AgregarUsuarioDto.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\BackendServicioRyM\\Usuarios\\Dtos\\AgregarUsuarioDto.cs",
-              "RelativeToolTip": "BackendServicioRyM\\Usuarios\\Dtos\\AgregarUsuarioDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T01:27:06.403Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ServicioRoles.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Roles\\ServicioRoles.cs",
-              "RelativeDocumentMoniker": "Infraestructura\\Roles\\ServicioRoles.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Roles\\ServicioRoles.cs",
-              "RelativeToolTip": "Infraestructura\\Roles\\ServicioRoles.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABsAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:04:59.935Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Presentacion\\Program.cs",
               "RelativeDocumentMoniker": "Presentacion\\Program.cs",
               "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Presentacion\\Program.cs",
               "RelativeToolTip": "Presentacion\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAYAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-07T00:20:37.062Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "JwtService.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Servicios\\JwtService.cs",
-              "RelativeDocumentMoniker": "Infraestructura\\Servicios\\JwtService.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Servicios\\JwtService.cs",
-              "RelativeToolTip": "Infraestructura\\Servicios\\JwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwBMAAABOAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T23:56:32.361Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Presentacion\\appsettings.json",
-              "RelativeDocumentMoniker": "Presentacion\\appsettings.json",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Presentacion\\appsettings.json",
-              "RelativeToolTip": "Presentacion\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-06T23:53:13.091Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "UsuarioRepository.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Usuarios\\UsuarioRepository.cs",
-              "RelativeDocumentMoniker": "Infraestructura\\Usuarios\\UsuarioRepository.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Infraestructura\\Usuarios\\UsuarioRepository.cs",
-              "RelativeToolTip": "Infraestructura\\Usuarios\\UsuarioRepository.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwDEAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T23:28:03.697Z",
+              "WhenOpened": "2024-10-07T22:22:59.175Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "IJwtService.cs",
-              "DocumentMoniker": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IJwtService.cs",
-              "RelativeDocumentMoniker": "Dominio\\Repositorios\\IJwtService.cs",
-              "ToolTip": "C:\\Users\\Personal\\Documents\\GitHub\\ProyectoFinalFidelitas_Backend\\BackendServicioRyM\\Dominio\\Repositorios\\IJwtService.cs",
-              "RelativeToolTip": "Dominio\\Repositorios\\IJwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T23:52:37.395Z"
             }
           ]
         }

@@ -1,4 +1,5 @@
 ﻿using Aplicacion.DataBase;
+using Aplicacion.Roles;
 using Aplicacion.Usuarios;
 using Dominio.Entidades;
 using Dominio.Interfaces;
@@ -19,7 +20,8 @@ namespace Aplicacion.Extensiones
             services.AddDbContext<DatabaseContext>(config => config.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentityCore<Usuario>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-                     
+            services.AddScoped<IRoleRepository, ServicioRoles>();
+
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;

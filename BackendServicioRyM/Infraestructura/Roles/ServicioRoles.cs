@@ -1,4 +1,5 @@
-﻿using Dominio.Entidades;
+﻿using Dominio.Comun;
+using Dominio.Entidades;
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
 
@@ -27,13 +28,23 @@ namespace Aplicacion.Roles
             }
         }
 
-        public async Task AsignarRolAUsuario(string userId, string roleName)
+        public async Task<Resultado> AsignarRolAUsuario(string userId, string roleName)
         {
             var user = await _userManager.FindByIdAsync(userId);
             if (user != null && !await _userManager.IsInRoleAsync(user, roleName))
             {
-                await _userManager.AddToRoleAsync(user, roleName);
+                var result = await _userManager.AddToRoleAsync(user, roleName);
+                if (result.Succeeded)
+                {
+                    return Resultado.Exitoso();
+                }
+                else
+                {
+                    return Resultado.Fallido(result.Errors.Select(e => e.Description));
+                }
             }
+
+            return Resultado.Fallido(new[] { "Usuario no encontrado o ya tiene asignado el rol." });
         }
 
         public async Task<bool> EsUsuarioEnRol(string userId, string roleName)
