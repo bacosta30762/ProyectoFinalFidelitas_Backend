@@ -12,7 +12,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddInfraestructura(builder.Configuration);
 builder.Services.AddAplicacion();
 
+
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    await RoleSeeder.SeedRolesAsync(scope.ServiceProvider);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

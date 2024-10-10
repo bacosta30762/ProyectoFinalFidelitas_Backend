@@ -3,6 +3,7 @@ using Aplicacion.Roles;
 using Aplicacion.Usuarios;
 using Dominio.Entidades;
 using Dominio.Interfaces;
+using Infraestructura.Servicios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -18,9 +19,11 @@ namespace Aplicacion.Extensiones
         public static void AddInfraestructura(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<DatabaseContext>(config => config.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
-            services.AddIdentityCore<Usuario>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>();
+            services.AddIdentityCore<Usuario>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IRoleRepository, ServicioRoles>();
+            services.AddScoped<IEnviadorCorreos, EnviadorCorreos>();
+            //services.AddIdentityCore<Usuario, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
 
             services.AddAuthentication(options =>
             {
@@ -40,7 +43,6 @@ namespace Aplicacion.Extensiones
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:SecretKey"]))
                 };
             });
-
         }
     }
 }

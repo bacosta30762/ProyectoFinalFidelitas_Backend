@@ -50,8 +50,8 @@ namespace Presentacion.Controllers
             return Ok(resultado);
         }
 
-        [HttpDelete("Eliminar")]
-        public async Task<IActionResult> EliminarUsuario(string cedula)
+        [HttpPut("Deseactivar")]
+        public async Task<IActionResult> DesactivarUsuario(string cedula)
         {
             var usuario = await _usuariosService.ObtenerPorCedulaAsync(cedula); 
             if (usuario == null)
@@ -59,7 +59,20 @@ namespace Presentacion.Controllers
                 return NotFound(new { mensaje = "Usuario no encontrado" });
             }
 
-            var resultado = await _usuariosService.EliminarUsuarioAsync(usuario.Cedula);
+            var resultado = await _usuariosService.DesactivarUsuarioAsync(usuario.Cedula);
+            return Ok(resultado);
+        }
+
+        [HttpPut("Activar")]
+        public async Task<IActionResult> ActivarUsuario(string cedula)
+        {
+            var usuario = await _usuariosService.ObtenerPorCedulaAsync(cedula);
+            if (usuario == null)
+            {
+                return NotFound(new { mensaje = "Usuario no encontrado" });
+            }
+
+            var resultado = await _usuariosService.ActivarUsuarioAsync(usuario.Cedula);
             return Ok(resultado);
         }
 
@@ -70,5 +83,17 @@ namespace Presentacion.Controllers
             return Ok(resultado);
         }
 
+        [HttpPost("RecuperarContraseña")]
+        public async Task<IActionResult> RecuperarContraseñaToken(RecuperarPasswordDto dto)
+        {
+            var resultado = await _usuariosService.GenerarTokenRecuperarPassword(dto);
+
+            if (!resultado.FueExitoso)
+            {
+                return BadRequest(resultado.Errores);
+            }
+
+            return Ok(new { mensaje = "Token de recuperación enviado al correo" });
+        }
     }
 }

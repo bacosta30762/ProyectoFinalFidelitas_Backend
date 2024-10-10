@@ -5,7 +5,6 @@ using Dominio.Comun;
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using FluentValidation;
-using Microsoft.AspNetCore.Http;
 
 namespace Aplicacion.Servicios
 {
@@ -17,8 +16,11 @@ namespace Aplicacion.Servicios
         private readonly IJwtService _jwtService;
         private readonly IRoleRepository _roleRepository;
         private readonly IValidator<ActualizarUsuarioDto> _validadorActualizar;
+        private readonly IValidator<RecuperarPasswordDto> _validadorRecuperarPassword;
+        private readonly IEnviadorCorreos _enviadorCorreos;
 
-        public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper, IJwtService jwtService, IRoleRepository roleRepository, IValidator<ActualizarUsuarioDto> validadorActualizar)
+
+        public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper, IJwtService jwtService, IRoleRepository roleRepository, IValidator<ActualizarUsuarioDto> validadorActualizar, IEnviadorCorreos enviadorCorreos, IValidator<RecuperarPasswordDto> validadorRecuperarPassword)
         {
             _usuariosRepository = usuariosRepository;
             _validador = validador;
@@ -26,6 +28,8 @@ namespace Aplicacion.Servicios
             _jwtService = jwtService;
             _roleRepository = roleRepository;
             _validadorActualizar = validadorActualizar;
+            _enviadorCorreos = enviadorCorreos;
+            _validadorRecuperarPassword = validadorRecuperarPassword;
         }
 
         public async Task<Resultado> AgregarUsuarioAsync(AgregarUsuarioDto dto)
@@ -84,18 +88,36 @@ namespace Aplicacion.Servicios
             return result.FueExitoso ? Resultado.Exitoso() : Resultado.Fallido(new[] { "No se pudo actualizar el usuario." });
         }
 
-        // Eliminar un usuario por cédula
-        public async Task<Resultado> EliminarUsuarioAsync(string cedula)
+        // Desactivar un usuario por cédula
+        public async Task<Resultado> DesactivarUsuarioAsync(string cedula)
         {
             var user = await _usuariosRepository.ObtenerPorCedulaAsync(cedula);
             if (user != null)
             {
-                var result = await _usuariosRepository.EliminarAsync(user);
+                user.Activo = false;
+                var result = await _usuariosRepository.ActualizarAsync(user);
                 if (result.FueExitoso)
                 {
                     return Resultado.Exitoso();
                 }
-                return Resultado.Fallido(new[] { "No se pudo eliminar el usuario." });
+                return Resultado.Fallido(new[] { "No se pudo desactivar el usuario." });
+            }
+            return Resultado.Fallido(new[] { "Usuario no encontrado." });
+        }
+
+        // Activar un usuario por cédula
+        public async Task<Resultado> ActivarUsuarioAsync(string cedula)
+        {
+            var user = await _usuariosRepository.ObtenerPorCedulaAsync(cedula);
+            if (user != null)
+            {
+                user.Activo = true;
+                var result = await _usuariosRepository.ActualizarAsync(user);
+                if (result.FueExitoso)
+                {
+                    return Resultado.Exitoso();
+                }
+                return Resultado.Fallido(new[] { "No se pudo activar el usuario." });
             }
             return Resultado.Fallido(new[] { "Usuario no encontrado." });
         }
@@ -125,6 +147,30 @@ namespace Aplicacion.Servicios
             {
                 return Resultado.Fallido(errores);
             }
+
+            return Resultado.Exitoso();
+        }
+
+        // Recuperar contraseña
+        public async Task<Resultado> GenerarTokenRecuperarPassword(RecuperarPasswordDto dto)
+        {
+            var validacion = await _validadorRecuperarPassword.ValidateAsync(dto);
+
+            if (!validacion.IsValid)
+            {
+                return Resultado.Fallido(validacion.Errors.Select(e => e.ErrorMessage));
+            }
+
+            var usuario = await _usuariosRepository.ObtenerPorCorreoAsync(dto.Correo);
+            if (usuario == null)
+            {
+                return Resultado.Fallido(new[] { "El correo no se encuentra asignado a algún usuario" }); ;
+            }
+
+            var token = await _usuariosRepository.GenerarTokenRecuperacionPasswordAsync(usuario);
+            string mensajeCorreo = $"Su token de recuperación es: {token}";
+
+            await _enviadorCorreos.SendEmailAsync(usuario.Email, "Recuperar Contraseña", mensajeCorreo);
 
             return Resultado.Exitoso();
         }

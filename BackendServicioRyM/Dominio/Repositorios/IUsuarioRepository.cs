@@ -12,5 +12,7 @@ namespace Dominio.Interfaces
         Task<Resultado> ActualizarAsync(Usuario usuario);
         Task<Resultado> EliminarAsync(Usuario usuario);
         Task<Resultado> AsignarRolAsync(string cedula, string roleName);
+        Task<Usuario?> ObtenerPorCorreoAsync(string correo);
+        Task<string?> GenerarTokenRecuperacionPasswordAsync(Usuario usuario);
     }
 }

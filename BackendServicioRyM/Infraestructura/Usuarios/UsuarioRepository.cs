@@ -60,6 +60,11 @@ namespace Aplicacion.Usuarios
             return await _userManager.Users.FirstOrDefaultAsync(u => u.Cedula == cedula);
         }
 
+        public async Task<Usuario?> ObtenerPorCorreoAsync(string correo)
+        {
+            return await _userManager.Users.FirstOrDefaultAsync(u => u.Email == correo);
+        }
+
         public async Task<Resultado> ActualizarAsync(Usuario usuario)
         {
             var result = await _userManager.UpdateAsync(usuario);
@@ -79,6 +84,12 @@ namespace Aplicacion.Usuarios
 
             var result = await _userManager.AddToRoleAsync(usuario, roleName);
             return result.Succeeded ? Resultado.Exitoso() : Resultado.Fallido(result.Errors.Select(e => e.Description));
+        }
+
+        public async Task<string?> GenerarTokenRecuperacionPasswordAsync(Usuario usuario)
+        {
+            var token = await _userManager.GeneratePasswordResetTokenAsync(usuario);
+            return token;
         }
 
 
