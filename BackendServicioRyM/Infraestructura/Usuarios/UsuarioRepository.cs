@@ -92,6 +92,12 @@ namespace Aplicacion.Usuarios
             return token;
         }
 
+        public async Task<IdentityResult> RestablecerPasswordAsync(Usuario usuario, string token, string password)
+        {
+            var resultado = await _userManager.ResetPasswordAsync(usuario, token, password);
+            return resultado;
+        }
+
 
     }
 }

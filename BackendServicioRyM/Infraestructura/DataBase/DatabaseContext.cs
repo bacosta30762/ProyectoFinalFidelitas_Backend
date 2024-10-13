@@ -6,8 +6,9 @@ namespace Aplicacion.DataBase
 {
     public class DatabaseContext : IdentityDbContext<Usuario>
     {
-        
+        //Creación de Tablas
         public DbSet<Usuario> Usuarios { get; set; }
+        
         /*public DbSet<Orden> Ordenes { get; set; }
         public DbSet<AsignacionTecnico> AsignacionTecnicos { get; set; }*/
 

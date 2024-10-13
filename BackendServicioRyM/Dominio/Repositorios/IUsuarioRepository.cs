@@ -1,5 +1,6 @@
 ﻿using Dominio.Comun;
 using Dominio.Entidades;
+using Microsoft.AspNetCore.Identity;
 
 namespace Dominio.Interfaces
 {
@@ -14,5 +15,6 @@ namespace Dominio.Interfaces
         Task<Resultado> AsignarRolAsync(string cedula, string roleName);
         Task<Usuario?> ObtenerPorCorreoAsync(string correo);
         Task<string?> GenerarTokenRecuperacionPasswordAsync(Usuario usuario);
+        Task<IdentityResult> RestablecerPasswordAsync(Usuario usuario, string token, string password);
     }
 }

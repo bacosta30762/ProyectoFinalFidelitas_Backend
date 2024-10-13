@@ -95,5 +95,18 @@ namespace Presentacion.Controllers
 
             return Ok(new { mensaje = "Token de recuperación enviado al correo" });
         }
+
+        [HttpPost("restablecer-password")]
+        public async Task<IActionResult> RestablecerPassword(RestablecerPasswordDto dto)
+        {
+            var resultado = await _usuariosService.RestablecerPasswordAsync(dto);
+
+            if (!resultado.FueExitoso)
+            {
+                return BadRequest(resultado.Errores);
+            }
+
+            return Ok("La contraseña ha sido restablecida con éxito");
+        }
     }
 }

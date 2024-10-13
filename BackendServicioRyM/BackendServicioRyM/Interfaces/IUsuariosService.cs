@@ -14,5 +14,6 @@ namespace Aplicacion.Interfaces
         Task<Usuario?> ObtenerPorCedulaAsync(string cedula);
         Task<Resultado> ActivarUsuarioAsync(string cedula);
         Task<Resultado> GenerarTokenRecuperarPassword(RecuperarPasswordDto dto);
+        Task<Resultado> RestablecerPasswordAsync(RestablecerPasswordDto dto);
     }
 }

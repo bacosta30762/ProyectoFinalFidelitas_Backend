@@ -18,9 +18,10 @@ namespace Aplicacion.Servicios
         private readonly IValidator<ActualizarUsuarioDto> _validadorActualizar;
         private readonly IValidator<RecuperarPasswordDto> _validadorRecuperarPassword;
         private readonly IEnviadorCorreos _enviadorCorreos;
+        private readonly IValidator<RestablecerPasswordDto> _validadorRestablecerPassword;
 
 
-        public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper, IJwtService jwtService, IRoleRepository roleRepository, IValidator<ActualizarUsuarioDto> validadorActualizar, IEnviadorCorreos enviadorCorreos, IValidator<RecuperarPasswordDto> validadorRecuperarPassword)
+        public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper, IJwtService jwtService, IRoleRepository roleRepository, IValidator<ActualizarUsuarioDto> validadorActualizar, IEnviadorCorreos enviadorCorreos, IValidator<RecuperarPasswordDto> validadorRecuperarPassword, IValidator<RestablecerPasswordDto> validadorRestablecerPassword)
         {
             _usuariosRepository = usuariosRepository;
             _validador = validador;
@@ -30,8 +31,10 @@ namespace Aplicacion.Servicios
             _validadorActualizar = validadorActualizar;
             _enviadorCorreos = enviadorCorreos;
             _validadorRecuperarPassword = validadorRecuperarPassword;
+            _validadorRestablecerPassword = validadorRestablecerPassword;
         }
 
+        //Agregar Usuario
         public async Task<Resultado> AgregarUsuarioAsync(AgregarUsuarioDto dto)
         {
             var validacion = await _validador.ValidateAsync(dto);
@@ -48,6 +51,7 @@ namespace Aplicacion.Servicios
 
         }
 
+        //Iniciar Sesión
         public async Task<Resultado<RespuestaLoginDto>> LoginAsync(LoginDto loginDto)
         {
             var respuestausuario = await _usuariosRepository.AutenticarUsuarioAsync(loginDto.Email, loginDto.Password);
@@ -151,7 +155,7 @@ namespace Aplicacion.Servicios
             return Resultado.Exitoso();
         }
 
-        // Recuperar contraseña
+        // Recuperar contraseña (Generar Token)
         public async Task<Resultado> GenerarTokenRecuperarPassword(RecuperarPasswordDto dto)
         {
             var validacion = await _validadorRecuperarPassword.ValidateAsync(dto);
@@ -171,6 +175,32 @@ namespace Aplicacion.Servicios
             string mensajeCorreo = $"Su token de recuperación es: {token}";
 
             await _enviadorCorreos.SendEmailAsync(usuario.Email, "Recuperar Contraseña", mensajeCorreo);
+
+            return Resultado.Exitoso();
+        }
+
+        //Restablecer contraseña
+        public async Task<Resultado> RestablecerPasswordAsync(RestablecerPasswordDto dto)
+        {
+            var validacion = await _validadorRestablecerPassword.ValidateAsync(dto);
+
+            if (!validacion.IsValid)
+            {
+                return Resultado.Fallido(validacion.Errors.Select(e => e.ErrorMessage));
+            }
+
+            var usuario = await _usuariosRepository.ObtenerPorCorreoAsync(dto.Correo);
+            if (usuario == null)
+            {
+                return Resultado.Fallido(new[] { "El correo no se encuentra asignado a algún usuario" });
+            }
+
+            var resultado = await _usuariosRepository.RestablecerPasswordAsync(usuario, dto.Token, dto.NuevaPassword);
+
+            if (!resultado.Succeeded)
+            {
+                return Resultado.Fallido(resultado.Errors.Select(e => e.Description));
+            }
 
             return Resultado.Exitoso();
         }
