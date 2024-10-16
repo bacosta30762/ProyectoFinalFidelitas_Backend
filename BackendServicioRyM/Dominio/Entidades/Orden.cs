@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace Dominio.Entidades
 {
     public class Orden
     {
+        [Key]
         public int NumeroOrden { get; set; }
         public string Servicio { get; set; } = string.Empty;
         public string Cliente { get; set; } = string.Empty;
@@ -15,11 +12,8 @@ namespace Dominio.Entidades
         public string Estado { get; set; } = string.Empty;
         public string PlacaVehiculo { get; set; } = string.Empty;
 
-        // Relación con mecánico asignado
+        // Relación con el mecánico asignado
         public string? MecanicoAsignadoId { get; set; }
         public Usuario? MecanicoAsignado { get; set; }
-
-        // Relación con asignación de técnicos
-        public ICollection<AsignacionTecnico> AsignacionTecnicos { get; set; }
     }
 }

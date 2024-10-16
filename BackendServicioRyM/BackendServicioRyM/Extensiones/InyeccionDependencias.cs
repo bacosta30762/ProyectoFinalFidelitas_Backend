@@ -15,6 +15,8 @@ namespace Aplicacion.Extensiones
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddScoped<IUsuariosService, UsuariosService>();
             services.AddScoped<IJwtService, JwtService>();
+            services.AddScoped<IOrdenService, OrdenService>();
+            services.AddScoped<IAsignacionMecanicoService, AsignacionMecanicoService>();
         }
     }
 }
