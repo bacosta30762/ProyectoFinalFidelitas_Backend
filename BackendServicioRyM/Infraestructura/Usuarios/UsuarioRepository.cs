@@ -98,6 +98,12 @@ namespace Aplicacion.Usuarios
             return resultado;
         }
 
+        public async Task<IEnumerable<Usuario>> ObtenerUsuariosPorRolAsync(string roleName)
+        {
+            var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
+            return usersInRole;
+        }
+
 
     }
 }
