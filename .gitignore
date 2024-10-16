@@ -405,6 +405,7 @@ BackendServicioRyM/Presentacion/obj/Debug/net8.0/Presentacion.AssemblyInfoInputs
 BackendServicioRyM/Presentacion/obj/Debug/net8.0/Presentacion.assets.cache
 BackendServicioRyM/Presentacion/obj/Debug/net8.0/Presentacion.csproj.AssemblyReference.cache
 BackendServicioRyM/Presentacion/obj/Debug/net8.0/Presentacion.GeneratedMSBuildEditorConfig.editorconfig
+<<<<<<< Updated upstream
 *.json
 *.json
 *.props
@@ -413,4 +414,8 @@ BackendServicioRyM/BackendServicioRyM/obj/Debug/net8.0/Aplicacion.AssemblyInfoIn
 BackendServicioRyM/BackendServicioRyM/obj/Debug/net8.0/Aplicacion.assets.cache
 BackendServicioRyM/BackendServicioRyM/obj/Aplicacion.csproj.nuget.dgspec.json
 BackendServicioRyM/Presentacion/obj/project.nuget.cache
+>>>>>>> Stashed changes
+=======
+*.cs
+*.cache
 >>>>>>> Stashed changes
