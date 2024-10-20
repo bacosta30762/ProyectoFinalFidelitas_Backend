@@ -6,14 +6,22 @@ namespace Dominio.Entidades
     {
         [Key]
         public int NumeroOrden { get; set; }
-        public string Servicio { get; set; } = string.Empty;
-        public string Cliente { get; set; } = string.Empty;
-        public string? Acciones { get; set; }
-        public string Estado { get; set; } = string.Empty;
-        public string PlacaVehiculo { get; set; } = string.Empty;
+        public int ServicioId { get; set; }
+        public string ClienteId { get; set; }
+        public string Estado { get; set; } 
+        public string PlacaVehiculo { get; set; }
+        public int Hora { get; set; }
+        public DateOnly Dia { get; set; }
+
+        //Relación con Usuario
+        public Usuario Cliente { get; set; }
+
+        //Relación con Servicio
+        public Servicio Servicio { get; set; }
 
         // Relación con el mecánico asignado
-        public string? MecanicoAsignadoId { get; set; }
-        public Usuario? MecanicoAsignado { get; set; }
+        public string MecanicoAsignadoId { get; set; }
+        public Mecanico MecanicoAsignado { get; set; }
+
     }
 }

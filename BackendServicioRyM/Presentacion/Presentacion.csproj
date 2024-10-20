@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BackendServicioRyM\Aplicacion.csproj" />
+    <ProjectReference Include="..\Aplicacion\Aplicacion.csproj" />
     <ProjectReference Include="..\Dominio\Dominio.csproj" />
     <ProjectReference Include="..\Infraestructura\Infraestructura.csproj" />
   </ItemGroup>
