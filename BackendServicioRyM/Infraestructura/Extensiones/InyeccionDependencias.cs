@@ -4,6 +4,7 @@ using Aplicacion.Usuarios;
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using Dominio.Repositorios;
+using Infraestructura.Mecanicos;
 using Infraestructura.Ordenes;
 using Infraestructura.Servicios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,6 +27,8 @@ namespace Aplicacion.Extensiones
             services.AddScoped<IRoleRepository, ServicioRoles>();
             services.AddScoped<IEnviadorCorreos, EnviadorCorreos>();
             services.AddScoped<IOrdenRepository, OrdenRepository>();
+            services.AddScoped<IMecanicoRepository, MecanicoRepository>();
+
             //services.AddIdentityCore<Usuario, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
 
             services.AddAuthentication(options =>

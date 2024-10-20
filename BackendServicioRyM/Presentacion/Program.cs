@@ -1,4 +1,8 @@
+using Aplicacion.DataBase;
 using Aplicacion.Extensiones;
+using Dominio.Entidades;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +15,20 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddInfraestructura(builder.Configuration);
 builder.Services.AddAplicacion();
+builder.Services.AddHttpContextAccessor();
+
+// Configurar CORS
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("PermitirFrontend", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000") // Origen del frontend
+               .AllowAnyHeader()
+               .AllowAnyMethod()
+               .AllowCredentials(); // Si estás manejando cookies o autenticación
+    });
+});
+
 
 
 var app = builder.Build();
@@ -26,6 +44,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+
+app.UseCors("PermitirFrontend"); // Aplicar política de CORS
 
 app.UseHttpsRedirection();
 

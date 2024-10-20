@@ -9,6 +9,9 @@ namespace Aplicacion.DataBase
         //Creación de Tablas
         public DbSet<Usuario> Usuarios { get; set; }
         public DbSet<Orden> Ordenes { get; set; }
+        public DbSet<Mecanico> Mecanicos { get; set; }
+        public DbSet<Servicio> Servicios { get; set; }
+
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
             : base(options)

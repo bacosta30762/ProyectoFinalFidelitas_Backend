@@ -9,35 +9,31 @@ namespace Presentacion.Controllers
     [ApiController]
     public class OrdenesController : ControllerBase
     {
-        private readonly IAsignacionMecanicoService _asignacionMecanicoService;
         private readonly IOrdenService _ordenService;
+        private readonly IUsuariosService _usuariosService;
 
-        public OrdenesController(IAsignacionMecanicoService asignacionMecanicoService, IOrdenService ordenService)
+        public OrdenesController(IOrdenService ordenService, IUsuariosService usuariosService)
         {
-            _asignacionMecanicoService = asignacionMecanicoService;
             _ordenService = ordenService;
+            _usuariosService = usuariosService;
         }
 
-        [HttpPost("Crear Orden")]
-        //[Authorize(Roles = "Admin")]
-        public async Task<IActionResult> CrearOrden(CrearOrdenDto dto)
+        [HttpPost("crear")]
+        public async Task<IActionResult> CrearOrdenAsync(CrearOrdenDto dto)
         {
-            var resultadoCreacion = await _ordenService.CrearOrdenAsync(dto);
-
-            if (!resultadoCreacion.FueExitoso)
+            if (dto == null)
             {
-                return BadRequest(resultadoCreacion.Errores);
+                return BadRequest("Los datos de la orden son inválidos.");
             }
 
-            // Asignación automática del mecánico
-            var resultadoAsignacion = await _asignacionMecanicoService.AsignarMecanicoAsync(resultadoCreacion.Valor.NumeroOrden, dto.EspecialidadRequerida);
+            var resultado = await _ordenService.CrearOrdenAsync(dto);
 
-            if (!resultadoAsignacion.FueExitoso)
+            if (!resultado.FueExitoso)
             {
-                return BadRequest(resultadoAsignacion.Errores);
+                return BadRequest(resultado.Errores);
             }
 
-            return Ok("Orden creada y mecánico asignado exitosamente.");
+            return Ok("Orden creada con éxito.");
         }
     }
 }
