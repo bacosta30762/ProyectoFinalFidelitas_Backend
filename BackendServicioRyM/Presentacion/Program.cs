@@ -1,8 +1,4 @@
-using Aplicacion.DataBase;
 using Aplicacion.Extensiones;
-using Dominio.Entidades;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,12 +26,18 @@ builder.Services.AddCors(options =>
 });
 
 
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+    });
 
 var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
     await RoleSeeder.SeedRolesAsync(scope.ServiceProvider);
+    await ServicioSeeder.SeedServiciosAsync(scope.ServiceProvider);
 }
 
 // Configure the HTTP request pipeline.

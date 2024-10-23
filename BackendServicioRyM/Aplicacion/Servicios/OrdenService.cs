@@ -22,6 +22,11 @@ namespace Aplicacion.Servicios
             //Obtener Id del Usuario logueado
             var clienteid = _usuariosService.ObtenerUsuarioIdAutenticado();
 
+            if (string.IsNullOrEmpty(clienteid)) // Verificar si el clienteid es nulo o vacío
+            {
+                return Resultado.Fallido(new[] { "El usuario no está autenticado." });
+            }
+
             var mecanicodisponible = await _ordenRepository.ObtenerMecanicoDisponibleAsync(dto.ServicioId, dto.Dia, dto.Hora);
             if (mecanicodisponible == null)
             {

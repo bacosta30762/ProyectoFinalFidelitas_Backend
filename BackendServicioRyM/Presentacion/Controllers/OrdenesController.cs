@@ -1,6 +1,5 @@
 ﻿using Aplicacion.Interfaces;
 using Aplicacion.Usuarios.Dtos;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentacion.Controllers
