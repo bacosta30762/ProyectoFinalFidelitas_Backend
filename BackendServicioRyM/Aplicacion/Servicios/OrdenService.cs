@@ -49,5 +49,10 @@ namespace Aplicacion.Servicios
             
 
         }
+
+        public async Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia)
+        {
+            return await _ordenRepository.ObtenerHorasDisponiblesAsync(servicioId, dia);
+        }
     }
 }

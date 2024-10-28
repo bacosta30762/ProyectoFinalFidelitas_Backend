@@ -34,5 +34,12 @@ namespace Presentacion.Controllers
 
             return Ok("Orden creada con éxito.");
         }
+
+        [HttpGet("horas-disponibles")]
+        public async Task<IActionResult> ObtenerHorasDisponibles(int servicioId, DateOnly dia)
+        {
+            var horasDisponibles = await _ordenService.ObtenerHorasDisponiblesAsync(servicioId, dia);
+            return Ok(horasDisponibles);
+        }
     }
 }

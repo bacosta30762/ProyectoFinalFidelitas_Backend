@@ -45,7 +45,45 @@ namespace Infraestructura.Ordenes
             return mecanicoDisponible;
         }
 
-        public async Task<List<int>> ObtenerHorasDisponibles(int servicioId, DateOnly dia)
+        public async Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia)
+        {
+            // Definimos las horas del día (ejemplo: 8 a 16, es decir, de 8 AM a 4 PM)
+            int horaInicio = 8;
+            int horaFin = 16;
+
+            // Lista de todas las horas posibles
+            var horas = Enumerable.Range(horaInicio, horaFin - horaInicio + 1).ToList(); // Asegúrate de incluir la última hora
+
+            // Obtener los mecánicos que pueden atender el servicio solicitado
+            var mecanicos = await _context.Mecanicos
+                .Where(m => m.Servicios.Any(s => s.Id == servicioId))
+                .ToListAsync();
+
+            // Filtrar las horas donde hay disponibilidad
+            var horasDisponibles = new List<int>();
+
+            foreach (var hora in horas)
+            {
+                // Verificar si al menos un mecánico está disponible en esta hora
+                bool algunoDisponible = await _context.Mecanicos
+                    .Where(m => mecanicos.Select(m => m.UsuarioId).Contains(m.UsuarioId)) // Filtrar solo mecánicos que pueden atender el servicio
+                    .AnyAsync(m => !_context.Ordenes
+                        .Any(o => o.ServicioId == servicioId &&
+                                  o.Dia == dia &&
+                                  o.Hora == hora &&
+                                  o.MecanicoAsignadoId == m.UsuarioId));
+
+                if (algunoDisponible)
+                {
+                    horasDisponibles.Add(hora);
+                }
+            }
+
+            return horasDisponibles;
+        }
+
+
+        /*public async Task<List<int>> ObtenerHorasDisponibles(int servicioId, DateOnly dia)
         {
             // Definimos las horas del día (ejemplo: 8 a 17, es decir, de 8 AM a 5 PM)
             int horaInicio = 8;
@@ -78,6 +116,6 @@ namespace Infraestructura.Ordenes
             }
 
             return horasDisponibles;
-        }
+        }*/
     }
 }

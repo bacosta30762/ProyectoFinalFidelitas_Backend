@@ -66,6 +66,10 @@ namespace Aplicacion.Servicios
             {
                 return Resultado<RespuestaLoginDto>.Fallido(respuestausuario.Errores);
             }
+            if (!respuestausuario.Valor.Activo)
+            {
+                return Resultado<RespuestaLoginDto>.Fallido(new[] { "El usuario no está activo." });
+            }
             var roles = await _usuariosRepository.ObtenerRolesAsync(respuestausuario.Valor);
             var token = _jwtService.GenerarToken(respuestausuario.Valor, roles);
 

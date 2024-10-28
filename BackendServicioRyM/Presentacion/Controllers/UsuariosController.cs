@@ -21,7 +21,13 @@ namespace Presentacion.Controllers
         {
             var resultado = await _usuariosService.AgregarUsuarioAsync(dto);
 
-            return Ok(resultado);
+            //Enviar lista de los errores obtenidos
+            if (!resultado.FueExitoso)
+            {
+                return BadRequest(resultado.Errores);
+            }
+
+            return Ok(new { Mensaje = "Usuario registrado exitosamente." });
         }
 
         [HttpPost("Login")]
