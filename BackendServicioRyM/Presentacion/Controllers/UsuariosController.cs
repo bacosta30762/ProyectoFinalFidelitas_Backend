@@ -21,7 +21,13 @@ namespace Presentacion.Controllers
         {
             var resultado = await _usuariosService.AgregarUsuarioAsync(dto);
 
-            return Ok(resultado);
+            //Enviar lista de los errores obtenidos
+            if (!resultado.FueExitoso)
+            {
+                return BadRequest(resultado.Errores);
+            }
+
+            return Ok(new { Mensaje = "Usuario registrado exitosamente." });
         }
 
         [HttpPost("Login")]
@@ -107,6 +113,20 @@ namespace Presentacion.Controllers
             }
 
             return Ok("La contraseña ha sido restablecida con éxito");
+        }
+
+        [HttpGet("ObtenerUsuario/{cedula}")]
+        public async Task<IActionResult> ObtenerUsuarioPorCedula(string cedula)
+        {
+            try
+            {
+                var usuario = await _usuariosService.ObtenerInformacionUsuario(cedula);
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
         }
     }
 }

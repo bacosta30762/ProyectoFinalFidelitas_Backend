@@ -1,6 +1,9 @@
 ﻿using Aplicacion.Interfaces;
+using Aplicacion.Servicios;
 using Aplicacion.Usuarios.Dtos;
+using Dominio.Comun;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace Presentacion.Controllers
 {
@@ -10,11 +13,13 @@ namespace Presentacion.Controllers
     {
         private readonly IOrdenService _ordenService;
         private readonly IUsuariosService _usuariosService;
+        private readonly IMecanicoService _mecanicoService;
 
-        public OrdenesController(IOrdenService ordenService, IUsuariosService usuariosService)
+        public OrdenesController(IOrdenService ordenService, IUsuariosService usuariosService, IMecanicoService mecanicoService)
         {
             _ordenService = ordenService;
             _usuariosService = usuariosService;
+            _mecanicoService = mecanicoService;
         }
 
         [HttpPost("crear")]
@@ -34,5 +39,69 @@ namespace Presentacion.Controllers
 
             return Ok("Orden creada con éxito.");
         }
+
+        [HttpGet("horas-disponibles")]
+        public async Task<IActionResult> ObtenerHorasDisponibles(int servicioId, DateOnly dia)
+        {
+            var horasDisponibles = await _ordenService.ObtenerHorasDisponiblesAsync(servicioId, dia);
+            return Ok(horasDisponibles);
+        }
+
+        [HttpDelete("Eliminarorden{id}")]
+        public async Task<IActionResult> EliminarOrden(int id)
+        {
+            try
+            {
+                await _ordenService.EliminarOrdenPorIdAsync(id);
+                return NoContent();
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message }); 
+            }
+        }
+
+        [HttpGet("lista-mecanicos")]
+        public async Task<IActionResult> ObtenerMecanicosDisponibles()
+        {
+            var mecanicos = await _mecanicoService.ObtenerMecanicosDisponiblesAsync();
+
+            if (mecanicos == null || !mecanicos.Any())
+            {
+                return NotFound("No se encontraron mecánicos disponibles.");
+            }
+
+            return Ok(mecanicos);
+        }
+
+        [HttpPut("asignar-mecanico")]
+        public async Task<IActionResult> AsignarMecanicoAsync(int numeroOrden, string mecanicoId)
+        {
+            var resultado = await _ordenService.AsignarMecanicoAsync(numeroOrden, mecanicoId);
+
+            if (!resultado.FueExitoso)
+            {
+                return BadRequest(resultado.Errores);
+            }
+
+            return Ok("Mecánico asignado con éxito a la orden.");
+        }
+
+        [HttpGet("listar-ordenes-usuario")]
+        public async Task<IActionResult> ObtenerOrdenesUsuario()
+        {
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(usuarioId))
+                return Unauthorized("Usuario no autenticado.");
+
+            var resultado = await _ordenService.listarOrdenesUsuarioAsync(usuarioId);
+
+            if (!resultado.FueExitoso)
+                return NotFound(resultado.Errores.FirstOrDefault());
+
+            return Ok(resultado.Valor);
+        }
+
     }
 }

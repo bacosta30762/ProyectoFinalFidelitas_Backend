@@ -6,8 +6,11 @@ namespace Dominio.Repositorios
     {
         Task ActualizarAsync(Orden orden);
         Task CrearAsync(Orden orden);
-        Task<List<int>> ObtenerHorasDisponibles(int servicioId, DateOnly dia);
+        Task EliminarAsync(Orden orden);
+        Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia);
         Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora);
+        Task<List<Orden>> ObtenerOrdenesPorClienteId(string clienteId);
+        Task<Orden> ObtenerOrdenPorIdAsync(int id);
         Task<Orden> ObtenerPorNumeroAsync(int numeroOrden);
     }
 }
