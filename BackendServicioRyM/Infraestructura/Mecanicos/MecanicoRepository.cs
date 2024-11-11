@@ -61,5 +61,10 @@ namespace Infraestructura.Mecanicos
             await _context.SaveChangesAsync();
             return Resultado.Exitoso();
         }
+
+        public async Task<List<Mecanico>> ObtenerMecanicosDisponiblesAsync()
+        {
+            return await _context.Mecanicos.ToListAsync();
+        }
     }
 }

@@ -16,5 +16,6 @@ namespace Aplicacion.Interfaces
         Task<Resultado> GenerarTokenRecuperarPassword(RecuperarPasswordDto dto);
         Task<Resultado> RestablecerPasswordAsync(RestablecerPasswordDto dto);
         string? ObtenerUsuarioIdAutenticado();
+        Task<Resultado<UsuarioDto>> ObtenerInformacionUsuario(string cedula);
     }
 }

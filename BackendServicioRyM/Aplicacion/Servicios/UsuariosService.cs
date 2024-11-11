@@ -25,7 +25,6 @@ namespace Aplicacion.Servicios
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly IMecanicoRepository _mecanicoRepository;
 
-
         public UsuariosService(IUsuarioRepository usuariosRepository, IValidator<AgregarUsuarioDto> validador, IMapper mapper, IJwtService jwtService, IRoleRepository roleRepository, IValidator<ActualizarUsuarioDto> validadorActualizar, IEnviadorCorreos enviadorCorreos, IValidator<RecuperarPasswordDto> validadorRecuperarPassword, IValidator<RestablecerPasswordDto> validadorRestablecerPassword, IHttpContextAccessor httpContextAccessor, IMecanicoRepository mecanicoRepository)
         {
             _usuariosRepository = usuariosRepository;
@@ -38,7 +37,6 @@ namespace Aplicacion.Servicios
             _validadorRecuperarPassword = validadorRecuperarPassword;
             _validadorRestablecerPassword = validadorRestablecerPassword;
             _httpContextAccessor = httpContextAccessor;
-            _mecanicoRepository = mecanicoRepository;
         }
 
         //Agregar Usuario
@@ -243,6 +241,20 @@ namespace Aplicacion.Servicios
             }
             var usuarioid = usuario.Claims.FirstOrDefault(u => u.Type == ClaimTypes.NameIdentifier)?.Value;
             return usuarioid;
+        }
+
+        //Obtener información del usuario
+        public async Task<Resultado<UsuarioDto>> ObtenerInformacionUsuario(string cedula)
+        {
+            var usuario = await _usuariosRepository.ObtenerPorCedulaAsync(cedula);
+
+            if (usuario == null)
+            {
+                return Resultado<UsuarioDto>.Fallido(new[] { "Usuario no encontrado" });
+            }
+
+            var usuarioDto = new UsuarioDto(usuario.Cedula, usuario.Nombre, usuario.Apellidos, usuario.Email);
+            return Resultado<UsuarioDto>.Exitoso(usuarioDto);
         }
     }
 }

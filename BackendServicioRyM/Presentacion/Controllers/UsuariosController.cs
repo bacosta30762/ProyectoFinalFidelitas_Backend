@@ -114,5 +114,19 @@ namespace Presentacion.Controllers
 
             return Ok("La contraseña ha sido restablecida con éxito");
         }
+
+        [HttpGet("ObtenerUsuario/{cedula}")]
+        public async Task<IActionResult> ObtenerUsuarioPorCedula(string cedula)
+        {
+            try
+            {
+                var usuario = await _usuariosService.ObtenerInformacionUsuario(cedula);
+                return Ok(usuario);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+        }
     }
 }

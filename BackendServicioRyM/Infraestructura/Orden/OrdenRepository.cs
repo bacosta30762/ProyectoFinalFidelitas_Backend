@@ -1,6 +1,6 @@
 ﻿using Aplicacion.DataBase;
-using Dominio.Repositorios;
 using Dominio.Entidades;
+using Dominio.Repositorios;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infraestructura.Ordenes
@@ -33,6 +33,17 @@ namespace Infraestructura.Ordenes
             await _context.SaveChangesAsync();
         }
 
+        public async Task EliminarAsync(Orden orden)
+        {
+            _context.Ordenes.Remove(orden);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task<Orden> ObtenerOrdenPorIdAsync(int id)
+        {
+            return await _context.Ordenes.FindAsync(id);
+        }
+
         public async Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
         {
             // Buscar el mecánico que puede atender el servicio y tiene menos órdenes en la fecha y hora especificadas
@@ -45,35 +56,35 @@ namespace Infraestructura.Ordenes
             return mecanicoDisponible;
         }
 
+        public async Task<Orden?> ObtenerOrdenPorNumeroAsync(int numeroOrden)
+        {
+            return await _context.Ordenes.FindAsync(numeroOrden);
+        }
+
         public async Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia)
         {
-            // Definimos las horas del día (ejemplo: 8 a 16, es decir, de 8 AM a 4 PM)
             int horaInicio = 8;
             int horaFin = 16;
 
             // Lista de todas las horas posibles
-            var horas = Enumerable.Range(horaInicio, horaFin - horaInicio + 1).ToList(); // Asegúrate de incluir la última hora
+            var horas = Enumerable.Range(horaInicio, horaFin - horaInicio + 1).ToList();
 
-            // Obtener los mecánicos que pueden atender el servicio solicitado
-            var mecanicos = await _context.Mecanicos
+            // Obtener los IDs de los mecánicos que pueden atender el servicio solicitado
+            var mecanicoIds = await _context.Mecanicos
                 .Where(m => m.Servicios.Any(s => s.Id == servicioId))
+                .Select(m => m.UsuarioId)
                 .ToListAsync();
 
-            // Filtrar las horas donde hay disponibilidad
             var horasDisponibles = new List<int>();
 
             foreach (var hora in horas)
             {
-                // Verificar si al menos un mecánico está disponible en esta hora
-                bool algunoDisponible = await _context.Mecanicos
-                    .Where(m => mecanicos.Select(m => m.UsuarioId).Contains(m.UsuarioId)) // Filtrar solo mecánicos que pueden atender el servicio
-                    .AnyAsync(m => !_context.Ordenes
-                        .Any(o => o.ServicioId == servicioId &&
-                                  o.Dia == dia &&
-                                  o.Hora == hora &&
-                                  o.MecanicoAsignadoId == m.UsuarioId));
+                // Verificar si hay algún mecánico disponible en esta hora
+                bool hayDisponibilidad = await _context.Ordenes
+                    .Where(o => o.ServicioId == servicioId && o.Dia == dia && o.Hora == hora)
+                    .AllAsync(o => !mecanicoIds.Contains(o.MecanicoAsignadoId));
 
-                if (algunoDisponible)
+                if (hayDisponibilidad)
                 {
                     horasDisponibles.Add(hora);
                 }
@@ -82,40 +93,16 @@ namespace Infraestructura.Ordenes
             return horasDisponibles;
         }
 
-
-        /*public async Task<List<int>> ObtenerHorasDisponibles(int servicioId, DateOnly dia)
+        public async Task<List<Orden>> ObtenerOrdenesPorClienteId(string clienteId)
         {
-            // Definimos las horas del día (ejemplo: 8 a 17, es decir, de 8 AM a 5 PM)
-            int horaInicio = 8;
-            int horaFin = 16;
-
-            // Lista de todas las horas posibles
-            var horas = Enumerable.Range(horaInicio, horaFin - horaInicio).ToList();
-
-            // Obtener los mecánicos que pueden atender el servicio solicitado
-            var mecanicos = await _context.Mecanicos
-                .Where(m => m.Servicios.Any(s => s.Id == servicioId))
+            return await _context.Ordenes
+                .Include(o => o.MecanicoAsignado)
+                    .ThenInclude(m => m.Usuario)
+                .Include(o => o.Servicio)
+                .Where(o => o.ClienteId == clienteId)
                 .ToListAsync();
+        }
 
-            // Filtrar las horas donde hay disponibilidad
-            var horasDisponibles = new List<int>();
-
-            foreach (var hora in horas)
-            {
-                // Verificar si no hay órdenes asignadas a todos los mecánicos en esta hora
-                bool todosOcupados = await _context.Ordenes
-                    .AnyAsync(o => o.ServicioId == servicioId &&
-                                   o.Dia == dia &&
-                                   o.Hora == hora &&
-                                   mecanicos.All(m => m.UsuarioId == o.MecanicoAsignadoId));
-
-                if (!todosOcupados)
-                {
-                    horasDisponibles.Add(hora);
-                }
-            }
-
-            return horasDisponibles;
-        }*/
     }
 }
+
