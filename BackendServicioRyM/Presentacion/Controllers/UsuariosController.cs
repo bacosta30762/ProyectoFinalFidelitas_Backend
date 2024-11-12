@@ -25,6 +25,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost("Login")]
+        // [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Login(LoginDto loginDto) 
         {
             var respuestalogin = await _usuariosService.LoginAsync(loginDto);
@@ -37,7 +38,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost("LoginAdmin")]
-        [Authorize(Roles = "Admin")]
+        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> LoginAdmin(LoginDto loginDto)
         {
             var respuestalogin = await _usuariosService.LoginAsync(loginDto);
