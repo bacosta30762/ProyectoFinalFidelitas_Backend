@@ -18,7 +18,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("PermitirFrontend", builder =>
     {
-        builder.WithOrigins("http://localhost:3000") // Origen del frontend
+        builder.WithOrigins("http://localhost:3000", //local
+            "http://localhost:3001", //local
+            "https://bacosta30762.github.io") //Github Origen del frontend
                .AllowAnyHeader()
                .AllowAnyMethod()
                .AllowCredentials(); // Si estás manejando cookies o autenticación
