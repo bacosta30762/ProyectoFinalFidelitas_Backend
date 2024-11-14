@@ -2,6 +2,7 @@
 using Aplicacion.Servicios;
 using Aplicacion.Usuarios.Dtos;
 using Dominio.Comun;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 
@@ -103,5 +104,33 @@ namespace Presentacion.Controllers
             return Ok(resultado.Valor);
         }
 
+        [HttpGet("listar-todas-ordenes")]
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> ObtenerTodasLasOrdenes()
+        {
+            var resultado = await _ordenService.ListarTodasLasOrdenesAsync();
+
+            if (!resultado.FueExitoso)
+                return NotFound(resultado.Errores.FirstOrDefault());
+
+            return Ok(resultado.Valor);
+        }
+
+        [HttpGet("listar-ordenes-asignadas")]
+        [Authorize(Roles = "Mecanico")]
+        public async Task<IActionResult> ObtenerOrdenesAsignadas()
+        {
+            var usuarioId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (string.IsNullOrEmpty(usuarioId))
+                return Unauthorized("Usuario no autenticado.");
+
+            var resultado = await _ordenService.ListarOrdenesPorMecanicoAsync(usuarioId);
+
+            if (!resultado.FueExitoso)
+                return NotFound(resultado.Errores.FirstOrDefault());
+
+            return Ok(resultado.Valor);
+        }
     }
 }

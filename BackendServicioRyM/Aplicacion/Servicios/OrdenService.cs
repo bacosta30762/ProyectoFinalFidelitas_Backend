@@ -103,5 +103,50 @@ namespace Aplicacion.Servicios
 
             return Resultado<List<ListarOrdenDto>>.Exitoso(ordenesDto);
         }
+
+        public async Task<Resultado<List<ListarOrdenDto>>> ListarTodasLasOrdenesAsync()
+        {
+            var ordenes = await _ordenRepository.ObtenerTodasLasOrdenes();
+
+            if (ordenes == null || !ordenes.Any())
+            {
+                return Resultado<List<ListarOrdenDto>>.Fallido(new List<string> { "No se encontraron órdenes en el sistema." });
+            }
+
+            var ordenesDto = ordenes.Select(o => new ListarOrdenDto(
+                o.NumeroOrden,
+                o.Estado,
+                o.PlacaVehiculo,
+                o.MecanicoAsignado?.Usuario?.Nombre ?? "N/A",
+                o.Dia,
+                o.Hora,
+                o.Servicio?.Descripcion ?? "N/A"
+            )).ToList();
+
+            return Resultado<List<ListarOrdenDto>>.Exitoso(ordenesDto);
+        }
+
+        public async Task<Resultado<List<ListarOrdenMecanicoDto>>> ListarOrdenesPorMecanicoAsync(string mecanicoId)
+        {
+            var ordenes = await _ordenRepository.ObtenerOrdenesPorMecanicoId(mecanicoId);
+
+            if (ordenes == null || !ordenes.Any())
+            {
+                return Resultado<List<ListarOrdenMecanicoDto>>.Fallido(new List<string> { "No se encontraron órdenes asignadas al mecánico." });
+            }
+
+            var ordenesDto = ordenes.Select(o => new ListarOrdenMecanicoDto(
+                o.NumeroOrden,
+                o.Estado,
+                o.PlacaVehiculo,
+                $"{o.Cliente.Nombre} {o.Cliente.Apellidos}",  
+                o.Dia,
+                o.Hora,
+                o.Servicio?.Descripcion ?? "N/A"
+            )).ToList();
+
+            return Resultado<List<ListarOrdenMecanicoDto>>.Exitoso(ordenesDto);
+        }
+
     }
 }

@@ -103,6 +103,24 @@ namespace Infraestructura.Ordenes
                 .ToListAsync();
         }
 
+        public async Task<List<Orden>> ObtenerTodasLasOrdenes()
+        {
+            return await _context.Ordenes
+                .Include(o => o.MecanicoAsignado)
+                    .ThenInclude(m => m.Usuario)
+                .Include(o => o.Servicio)
+                .ToListAsync();
+        }
+
+        public async Task<List<Orden>> ObtenerOrdenesPorMecanicoId(string mecanicoId)
+        {
+            return await _context.Ordenes
+                .Include(o => o.Cliente)
+                .Include(o => o.Servicio)
+                .Where(o => o.MecanicoAsignadoId == mecanicoId)
+                .ToListAsync();
+        }
+
     }
 }
 
