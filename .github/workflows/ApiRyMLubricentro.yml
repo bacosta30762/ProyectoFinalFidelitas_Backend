@@ -45,8 +45,15 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+      - name: Check directory permissions
+        run: |
+          echo "Checking permissions for the publish directory"
+          ls -l Presentacion/publish
+          chmod -R 755 Presentacion/publish
+
       - name: Deploy to Azure Web App
         run: |
+          echo "Deploying to Azure Web App"
           az webapp deploy \
           --name ${{ env.AZURE_WEBAPP_NAME }} \
           --resource-group ${{ env.AZURE_APIM_RESOURCEGROUP }} \
@@ -54,6 +61,7 @@ jobs:
 
       - name: Import API into Azure API Management
         run: |
+          echo "Importing API into Azure API Management"
           az apim api import \
           --path "${{ env.AZURE_APIM_RESOURCE_PATH }}" \
           --resource-group "${{ env.AZURE_APIM_RESOURCEGROUP }}" \
@@ -65,4 +73,6 @@ jobs:
           --subscription-required false
 
       - name: Logout
-        run: az logout
+        run: |
+          echo "Logging out of Azure"
+          az logout
