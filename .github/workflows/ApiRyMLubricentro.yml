@@ -45,11 +45,16 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Check directory permissions
+      - name: Verify if publish directory exists
         run: |
-          echo "Checking permissions for the publish directory"
-          ls -l Presentacion/publish
-          chmod -R 755 Presentacion/publish
+          echo "Verifying if the publish directory exists"
+          if [ -d "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}" ]; then
+            echo "Directory exists"
+            ls -l ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+          else
+            echo "Directory does not exist. Publishing might have failed."
+            exit 1
+          fi
 
       - name: Deploy to Azure Web App
         run: |
