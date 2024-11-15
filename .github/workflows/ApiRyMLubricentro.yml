@@ -2,7 +2,7 @@ name: Build and deploy .NET Core application to Web App ApiRyMLubricentro with A
 on:
   push:
     branches:
-    - Brandon
+    - main
 env:
   AZURE_WEBAPP_NAME: ApiRyMLubricentro
   AZURE_WEBAPP_PACKAGE_PATH: Presentacion/publish
