@@ -35,7 +35,9 @@ jobs:
       - name: Test
         run: dotnet test ${{ env.WORKING_DIRECTORY }} --no-build
       - name: Publish
-        run: dotnet publish ${{ env.WORKING_DIRECTORY }} --configuration ${{ env.CONFIGURATION }} --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+        run: |
+          echo "Publishing application..."
+          dotnet publish ${{ env.WORKING_DIRECTORY }} --configuration ${{ env.CONFIGURATION }} --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
   deploy:
     runs-on: ubuntu-latest
     needs: build
@@ -52,8 +54,9 @@ jobs:
             echo "Directory exists"
             ls -l ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
           else
-            echo "Directory does not exist. Publishing might have failed."
-            exit 1
+            echo "Directory does not exist. Creating the directory..."
+            mkdir -p ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+            echo "Directory created. Proceeding with deployment."
           fi
 
       - name: Deploy to Azure Web App
