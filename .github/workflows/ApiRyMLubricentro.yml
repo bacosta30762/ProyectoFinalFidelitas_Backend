@@ -47,18 +47,6 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Verify if publish directory exists
-        run: |
-          echo "Verifying if the publish directory exists"
-          if [ -d "${{ env.AZURE_WEBAPP_PACKAGE_PATH }}" ]; then
-            echo "Directory exists"
-            ls -l ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-          else
-            echo "Directory does not exist. Creating the directory..."
-            mkdir -p ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
-            echo "Directory created. Proceeding with deployment."
-          fi
-
       - name: Deploy to Azure Web App
         run: |
           echo "Deploying to Azure Web App"
