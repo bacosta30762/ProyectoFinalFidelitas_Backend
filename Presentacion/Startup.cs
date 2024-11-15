@@ -60,6 +60,9 @@ public class Startup
 
         app.UseAuthorization();
 
-        app.MapControllers();
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapControllers(); // Configurar rutas de los controladores
+        });
     }
 }
