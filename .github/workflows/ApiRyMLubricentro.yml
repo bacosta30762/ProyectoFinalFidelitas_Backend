@@ -47,6 +47,11 @@ jobs:
           echo "Publishing application..."
           dotnet publish ${{ env.WORKING_DIRECTORY }} --configuration ${{ env.CONFIGURATION }} --no-build --output ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
 
+      - name: List files in publish directory
+        run: |
+          echo "Listing files in the publish directory..."
+          ls -la ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
+  
   deploy:
     runs-on: ubuntu-latest
     needs: build
