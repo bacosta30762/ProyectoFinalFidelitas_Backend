@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Configurar el host para escuchar"
-builder.WebHost.UseUrls("http://0.0.0.0:8080", "http://0.0.0.0:80");
+builder.WebHost.UseUrls("http://0.0.0.0:80");
 
 // Agregar configuración del Startup
 var startup = new Startup(builder.Configuration);
