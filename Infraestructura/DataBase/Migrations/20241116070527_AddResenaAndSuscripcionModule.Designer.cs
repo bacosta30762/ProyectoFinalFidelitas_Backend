@@ -4,16 +4,19 @@ using Aplicacion.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Aplicacion.DataBase.Migrations
+namespace Infraestructura.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241116070527_AddResenaAndSuscripcionModule")]
+    partial class AddResenaAndSuscripcionModule
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -54,7 +57,12 @@ namespace Aplicacion.DataBase.Migrations
                     b.Property<string>("UsuarioId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("UsuarioId1")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("UsuarioId");
+
+                    b.HasIndex("UsuarioId1");
 
                     b.ToTable("Mecanicos");
                 });
@@ -395,10 +403,8 @@ namespace Aplicacion.DataBase.Migrations
             modelBuilder.Entity("Dominio.Entidades.Mecanico", b =>
                 {
                     b.HasOne("Dominio.Entidades.Usuario", "Usuario")
-                        .WithOne()
-                        .HasForeignKey("Dominio.Entidades.Mecanico", "UsuarioId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .WithMany()
+                        .HasForeignKey("UsuarioId1");
 
                     b.Navigation("Usuario");
                 });

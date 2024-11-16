@@ -1,4 +1,6 @@
-﻿using Aplicacion.Extensiones;
+﻿using Aplicacion.DataBase;
+using Aplicacion.Extensiones;
+using Microsoft.EntityFrameworkCore;
 
 public class Startup
 {
@@ -12,6 +14,10 @@ public class Startup
     // Configuración de servicios
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddDbContext<DatabaseContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+            
+
         // Agregar servicios al contenedor
         services.AddControllers();
         services.AddEndpointsApiExplorer();
@@ -64,5 +70,6 @@ public class Startup
         {
             endpoints.MapControllers(); 
         });
+
     }
 }
