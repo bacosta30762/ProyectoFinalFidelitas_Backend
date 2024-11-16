@@ -61,5 +61,5 @@ jobs:
         with:
           app-name: 'ApiRyMLubricentro'
           slot-name: 'Production'
-          package: ${{env.DOTNET_ROOT}}/publish
+          package: ${{env.DOTNET_ROOT}}/myapp
           
