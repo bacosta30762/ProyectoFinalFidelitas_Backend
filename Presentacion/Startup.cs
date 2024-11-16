@@ -54,15 +54,15 @@ public class Startup
 
         app.UseCors("PermitirFrontend"); // Aplicar política de CORS
 
-        //app.UseHttpsRedirection();
+        // Asegúrate de poner UseRouting antes de UseEndpoints
+        app.UseRouting();  
 
-        app.UseAuthentication();
-
-        app.UseAuthorization();
+        app.UseAuthentication();  // Manejo de autenticación
+        app.UseAuthorization();   // Manejo de autorización
 
         app.UseEndpoints(endpoints =>
         {
-            endpoints.MapControllers(); // Configurar rutas de los controladores
+            endpoints.MapControllers(); 
         });
     }
 }
