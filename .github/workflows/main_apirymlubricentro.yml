@@ -21,6 +21,11 @@ jobs:
         with:
           dotnet-version: '8.x'
 
+      - name: Copy web.config to the publish folder
+        run: |
+          mkdir -p ${{env.DOTNET_ROOT}}/myapp
+          cp web.config ${{env.DOTNET_ROOT}}/myapp/
+  
       - name: Build with dotnet
         run: dotnet build --configuration Release
 
