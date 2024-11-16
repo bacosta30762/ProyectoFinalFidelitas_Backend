@@ -54,7 +54,7 @@ public class Startup
 
         app.UseCors("PermitirFrontend"); // Aplicar política de CORS
 
-        app.UseHttpsRedirection();
+        //app.UseHttpsRedirection();
 
         app.UseAuthentication();
 
