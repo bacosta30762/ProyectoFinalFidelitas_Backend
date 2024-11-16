@@ -19,17 +19,15 @@ namespace Aplicacion.DataBase
 
         }
 
-        /*protected override void OnModelCreating(ModelBuilder modelBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnModelCreating(modelBuilder); 
+            base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Orden>().HasKey(o => o.NumeroOrden);
-            modelBuilder.Entity<AsignacionTecnico>().HasKey(at => new { at.Nombre, at.Especialidad, at.NumeroOrden });
-
-            modelBuilder.Entity<AsignacionTecnico>()
-                .HasOne(at => at.Orden)
-                .WithMany(o => o.AsignacionTecnicos)
-                .HasForeignKey(at => at.NumeroOrden);
-        }*/
+            modelBuilder.Entity<Mecanico>()
+                .HasOne(m => m.Usuario)
+                .WithOne()
+                .HasForeignKey<Mecanico>(m => m.UsuarioId)
+                .OnDelete(DeleteBehavior.Restrict); // Evita la eliminación en cascada
+        }
     }
 }
