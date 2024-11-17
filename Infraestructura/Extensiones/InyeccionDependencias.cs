@@ -21,7 +21,7 @@ namespace Aplicacion.Extensiones
     {
         public static void AddInfraestructura(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddDbContext<DatabaseContext>(config => config.UseSqlServer(configuration.GetConnectionString("Context")));
+            services.AddDbContext<DatabaseContext>(config => config.UseSqlServer(configuration.GetConnectionString("DefaultConnection")));
             services.AddIdentityCore<Usuario>().AddRoles<IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
             services.AddScoped<IRoleRepository, ServicioRoles>();
