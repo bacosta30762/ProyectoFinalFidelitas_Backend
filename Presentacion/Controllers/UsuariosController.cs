@@ -31,6 +31,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost("Login")]
+        // [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Login(LoginDto loginDto) 
         {
             var respuestalogin = await _usuariosService.LoginAsync(loginDto);
@@ -40,6 +41,19 @@ namespace Presentacion.Controllers
             }
 
             return Ok(respuestalogin.Valor); 
+        }
+
+        [HttpPost("LoginAdmin")]
+        // [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> LoginAdmin(LoginDto loginDto)
+        {
+            var respuestalogin = await _usuariosService.LoginAsync(loginDto);
+            if (!respuestalogin.FueExitoso)
+            {
+                return Unauthorized(respuestalogin.Errores);
+            }
+
+            return Ok(respuestalogin.Valor);
         }
 
         [HttpGet("Privado")]

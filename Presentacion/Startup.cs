@@ -1,6 +1,7 @@
 ﻿using Aplicacion.DataBase;
 using Aplicacion.Extensiones;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 public class Startup
 {
@@ -21,7 +22,40 @@ public class Startup
         // Agregar servicios al contenedor
         services.AddControllers();
         services.AddEndpointsApiExplorer();
-        services.AddSwaggerGen();
+        services.AddSwaggerGen(c =>
+        {
+            c.SwaggerDoc("v1", new OpenApiInfo
+            {
+                Title = "API Example",
+                Version = "v1"
+            });
+
+            // Configuración para incluir Bearer Token
+            c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+            {
+                Name = "Authorization",
+                Type = SecuritySchemeType.ApiKey,
+                Scheme = "Bearer",
+                BearerFormat = "JWT",
+                In = ParameterLocation.Header,
+                Description = "Introduce el token en el formato: Bearer {token}"
+            });
+
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference
+                {
+                    Type = ReferenceType.SecurityScheme,
+                    Id = "Bearer"
+                }
+            },
+            new string[] {}
+        }
+    });
+        });
 
         services.AddInfraestructura(Configuration);
         services.AddAplicacion();

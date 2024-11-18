@@ -96,6 +96,7 @@ namespace Aplicacion.Servicios
                 o.Estado,
                 o.PlacaVehiculo,
                 o.MecanicoAsignado?.Usuario?.Nombre ?? "N/A",
+                o.Cliente?.Nombre ?? "N/A",
                 o.Dia,
                 o.Hora,
                 o.Servicio?.Descripcion ?? "N/A"
@@ -118,6 +119,7 @@ namespace Aplicacion.Servicios
                 o.Estado,
                 o.PlacaVehiculo,
                 o.MecanicoAsignado?.Usuario?.Nombre ?? "N/A",
+                o.Cliente?.Nombre ?? "N/A",
                 o.Dia,
                 o.Hora,
                 o.Servicio?.Descripcion ?? "N/A"
