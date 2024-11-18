@@ -1,7 +1,6 @@
 ﻿using Aplicacion.DataBase;
 using Aplicacion.Extensiones;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.OpenApi.Models;
 
 public class Startup
