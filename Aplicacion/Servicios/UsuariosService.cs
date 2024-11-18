@@ -37,6 +37,7 @@ namespace Aplicacion.Servicios
             _validadorRecuperarPassword = validadorRecuperarPassword;
             _validadorRestablecerPassword = validadorRestablecerPassword;
             _httpContextAccessor = httpContextAccessor;
+            _mecanicoRepository = mecanicoRepository;
         }
 
         //Agregar Usuario
