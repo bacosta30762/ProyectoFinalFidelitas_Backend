@@ -1,9 +1,12 @@
 ﻿using Aplicacion.DataBase;
+using Aplicacion.Interfaces;
 using Aplicacion.Roles;
+using Aplicacion.Servicios;
 using Aplicacion.Usuarios;
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using Dominio.Repositorios;
+using Infraestructura.Marketing;
 using Infraestructura.Mecanicos;
 using Infraestructura.Ordenes;
 using Infraestructura.Servicios;
@@ -28,6 +31,12 @@ namespace Aplicacion.Extensiones
             services.AddScoped<IEnviadorCorreos, EnviadorCorreos>();
             services.AddScoped<IOrdenRepository, OrdenRepository>();
             services.AddScoped<IMecanicoRepository, MecanicoRepository>();
+
+            services.AddScoped<IBoletinRepository, BoletinRepository>();
+            services.AddScoped<IResenaRepository, ResenaRepository>();
+            services.AddScoped<ISuscripcionRepository, SuscripcionRepository>();
+            services.AddScoped<IMarketingService, MarketingService>();
+
 
             //services.AddIdentityCore<Usuario, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
 

@@ -11,16 +11,18 @@ namespace Aplicacion.DataBase
         public DbSet<Orden> Ordenes { get; set; }
         public DbSet<Mecanico> Mecanicos { get; set; }
         public DbSet<Servicio> Servicios { get; set; }
-
-
+        public DbSet<Boletin> Boletines { get; set; }
+        public DbSet<Resena> Resenas { get; set; }
+        public DbSet<Suscripcion> Suscripciones { get; set; }
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
-            : base(options)
-        {
+                    : base(options)
+                {
 
-        }
+                }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<Mecanico>()
@@ -28,6 +30,7 @@ namespace Aplicacion.DataBase
                 .WithOne()
                 .HasForeignKey<Mecanico>(m => m.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict); // Evita la eliminación en cascada
+            base.OnModelCreating(modelBuilder); 
         }
     }
 }
