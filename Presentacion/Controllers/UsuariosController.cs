@@ -43,6 +43,7 @@ namespace Presentacion.Controllers
             return Ok(respuestalogin.Valor); 
         }
 
+<<<<<<< Updated upstream
         [HttpPost("LoginAdmin")]
         // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> LoginAdmin(LoginDto loginDto)
@@ -63,6 +64,8 @@ namespace Presentacion.Controllers
            return Ok();
         }
 
+=======
+>>>>>>> Stashed changes
         [HttpPut("Actualizar/{cedula}")]
         public async Task<IActionResult> ActualizarUsuario([FromRoute]string cedula, [FromBody]ActualizarUsuarioDto dto)
         {
