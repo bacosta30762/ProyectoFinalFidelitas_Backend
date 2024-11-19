@@ -1,4 +1,5 @@
 ﻿using Aplicacion.DataBase;
+using Aplicacion.Usuarios.Dtos;
 using Dominio.Comun;
 using Dominio.Entidades;
 using Dominio.Repositorios;
@@ -64,7 +65,10 @@ namespace Infraestructura.Mecanicos
 
         public async Task<List<Mecanico>> ObtenerMecanicosDisponiblesAsync()
         {
-            return await _context.Mecanicos.ToListAsync();
+            //return await _context.Mecanicos.ToListAsync();
+            return await _context.Mecanicos
+               .Include(m => m.Usuario) // Incluimos la relación con la tabla de usuarios
+               .ToListAsync();
         }
     }
 }
