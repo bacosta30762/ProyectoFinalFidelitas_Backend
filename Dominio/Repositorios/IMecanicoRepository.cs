@@ -8,6 +8,7 @@ namespace Dominio.Repositorios
     {
         Task<Resultado> AgregarAsync(Mecanico mecanico);
         Task<Resultado> AsignarServiciosAMecanicoAsync(string usuarioId, List<int> servicioIds);
+        Task<Resultado> EliminarAsync(string usuarioId);
         Task<Mecanico?> ObtenerMecanicoPorIdAsync(string usuarioId);
         Task<List<Mecanico?>> ObtenerMecanicosDisponiblesAsync();
     }

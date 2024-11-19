@@ -45,22 +45,40 @@ namespace Infraestructura.Mecanicos
                 return Resultado.Fallido(new[] { "Mecánico no encontrado." });
             }
 
-            // Obtener servicios por ID
-            var servicios = await _context.Servicios
+            // Obtener los servicios actuales del mecánico
+            var serviciosActuales = mecanico.Servicios.ToList();
+
+            // Obtener los servicios por ID de la nueva lista
+            var nuevosServicios = await _context.Servicios
                 .Where(s => servicioIds.Contains(s.Id))
                 .ToListAsync();
 
-            // Asignar servicios al mecánico
-            foreach (var servicio in servicios)
+            // Determinar los servicios que deben ser eliminados
+            var serviciosAEliminar = serviciosActuales
+                .Where(s => !nuevosServicios.Contains(s))
+                .ToList();
+
+            // Determinar los servicios que deben ser agregados
+            var serviciosAAgregar = nuevosServicios
+                .Where(s => !serviciosActuales.Contains(s))
+                .ToList();
+
+            // Eliminar los servicios que no están en la nueva lista
+            foreach (var servicio in serviciosAEliminar)
             {
-                if (!mecanico.Servicios.Contains(servicio))
-                {
-                    mecanico.Servicios.Add(servicio);
-                }
+                mecanico.Servicios.Remove(servicio);
+            }
+
+            // Agregar los nuevos servicios
+            foreach (var servicio in serviciosAAgregar)
+            {
+                mecanico.Servicios.Add(servicio);
             }
 
             await _context.SaveChangesAsync();
             return Resultado.Exitoso();
+
+
         }
 
         public async Task<List<Mecanico>> ObtenerMecanicosDisponiblesAsync()
@@ -69,6 +87,31 @@ namespace Infraestructura.Mecanicos
             return await _context.Mecanicos
                .Include(m => m.Usuario) // Incluimos la relación con la tabla de usuarios
                .ToListAsync();
+        }
+
+        public async Task<Resultado> EliminarAsync(string usuarioId)
+        {
+            try
+            {
+                var mecanico = await ObtenerMecanicoPorIdAsync(usuarioId);
+                if (mecanico == null)
+                {
+                    return Resultado.Fallido(new[] { "Mecánico no encontrado." });
+                }
+
+                // Eliminar servicios relacionados
+                mecanico.Servicios.Clear();
+
+                // Eliminar mecánico
+                _context.Mecanicos.Remove(mecanico);
+                await _context.SaveChangesAsync();
+
+                return Resultado.Exitoso();
+            }
+            catch (Exception ex)
+            {
+                return Resultado.Fallido(new[] { "Error al eliminar mecánico: " + ex.Message });
+            }
         }
     }
 }

@@ -7,6 +7,8 @@ using Dominio.Interfaces;
 using Dominio.Repositorios;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Aplicacion.Servicios
@@ -136,52 +138,120 @@ namespace Aplicacion.Servicios
             return Resultado.Fallido(new[] { "Usuario no encontrado." });
         }
 
-        // Asignar uno o varios roles a un usuario por cédula
+        //Asignar uno o varios roles por número de cédula
         public async Task<Resultado> AsignarRolAsync(AsignarRolDto dto)
         {
-            var user = await _usuariosRepository.ObtenerPorCedulaAsync(dto.Cedula);
-
-            if (user == null)
-            {
-                return Resultado.Fallido(new[] { "Usuario no encontrado" });
-            }
             var errores = new List<string>();
 
-            foreach (var roleName in dto.RoleNames)
+            try
             {
-                var resultadoRol = await _usuariosRepository.AsignarRolAsync(user.Cedula, roleName);
-                if (!resultadoRol.FueExitoso)
+                var user = await _usuariosRepository.ObtenerPorCedulaAsync(dto.Cedula);
+
+                if (user == null)
                 {
-                    errores.Add($"Error al asignar el rol {roleName}: {string.Join(", ", resultadoRol.Errores)}");
+                    return Resultado.Fallido(new[] { "Usuario no encontrado" });
                 }
 
-                if (roleName == "Mecanico")
-                {
-                    var mecanico = new Mecanico
-                    {
-                        UsuarioId = user.Id,
-                        Usuario = user,
-                        Servicios = new List<Servicio>(),
-                        Ordenes = new List<Orden>()
-                    };
+                // Obtener roles actuales del usuario
+                var rolesActuales = await _roleRepository.ObtenerRolesUsuarioAsync(user.Id);
 
-                    var resultadoMecanico = await _mecanicoRepository.AgregarAsync(mecanico);
-                    if (!resultadoMecanico.FueExitoso)
+                // Determinar roles a eliminar
+                var rolesAEliminar = rolesActuales.Except(dto.RoleNames).ToList();
+
+                // Determinar roles a agregar
+                var rolesAAgregar = dto.RoleNames.Except(rolesActuales).ToList();
+
+                // Eliminar roles
+                foreach (var roleName in rolesAEliminar)
+                {
+                    try
                     {
-                        errores.Add($"Error al agregar el mecánico: {string.Join(", ", resultadoMecanico.Errores)}");
+                        if (roleName == "Mecanico")
+                        {
+                            // Eliminar al mecánico y registros relacionados
+                            var mecanico = await _mecanicoRepository.ObtenerMecanicoPorIdAsync(user.Id);
+                            if (mecanico != null)
+                            {
+                                var resultadoEliminarMecanico = await _mecanicoRepository.EliminarAsync(mecanico.UsuarioId);
+                                if (!resultadoEliminarMecanico.FueExitoso)
+                                {
+                                    errores.Add($"Error al eliminar el mecánico y registros relacionados: {string.Join(", ", resultadoEliminarMecanico.Errores)}");
+                                }
+                            }
+                        }
+
+                        var resultadoEliminar = await _roleRepository.EliminarRolAsync(user.Id, roleName);
+                        if (!resultadoEliminar.FueExitoso)
+                        {
+                            errores.Add($"Error al eliminar el rol {roleName}: {string.Join(", ", resultadoEliminar.Errores)}");
+                        }
                     }
-
+                    catch (Exception ex)
+                    {
+                        errores.Add($"Error al eliminar el rol {roleName}: {ex.Message}");
+                    }
                 }
 
-            }
+                // Asignar roles
+                foreach (var roleName in rolesAAgregar)
+                {
+                    try
+                    {
+                        // Verificar si el usuario ya tiene este rol
+                        var rolExistente = rolesActuales.Contains(roleName);
+                        if (rolExistente)
+                        {
+                            continue; // No intentar asignar el rol si ya lo tiene
+                        }
 
-            if (errores.Any())
+                        var resultadoRol = await _usuariosRepository.AsignarRolAsync(user.Cedula, roleName);
+                        if (!resultadoRol.FueExitoso)
+                        {
+                            errores.Add($"Error al asignar el rol {roleName}: {string.Join(", ", resultadoRol.Errores)}");
+                        }
+
+                        if (roleName == "Mecanico")
+                        {
+                            // Verificar si el mecánico ya está creado
+                            var mecanicoExistente = await _mecanicoRepository.ObtenerMecanicoPorIdAsync(user.Id);
+                            if (mecanicoExistente == null)
+                            {
+                                var mecanico = new Mecanico
+                                {
+                                    UsuarioId = user.Id,
+                                    Usuario = user,
+                                    Servicios = new List<Servicio>(),
+                                    Ordenes = new List<Orden>()
+                                };
+
+                                var resultadoMecanico = await _mecanicoRepository.AgregarAsync(mecanico);
+                                if (!resultadoMecanico.FueExitoso)
+                                {
+                                    errores.Add($"Error al agregar el mecánico: {string.Join(", ", resultadoMecanico.Errores)}");
+                                }
+                            }
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        errores.Add($"Error al asignar el rol {roleName}: {ex.Message}");
+                    }
+                }
+
+                if (errores.Any())
+                {
+                    return Resultado.Fallido(errores);
+                }
+
+                return Resultado.Exitoso();
+            }
+            catch (Exception ex)
             {
-                return Resultado.Fallido(errores);
+                // Capturar cualquier excepción inesperada
+                return Resultado.Fallido(new[] { $"Error inesperado: {ex.Message}" });
             }
-
-            return Resultado.Exitoso();
         }
+
 
         // Recuperar contraseña (Generar Token)
         public async Task<Resultado> GenerarTokenRecuperarPassword(RecuperarPasswordDto dto)
