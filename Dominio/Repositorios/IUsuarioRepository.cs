@@ -17,5 +17,6 @@ namespace Dominio.Interfaces
         Task<string?> GenerarTokenRecuperacionPasswordAsync(Usuario usuario);
         Task<IdentityResult> RestablecerPasswordAsync(Usuario usuario, string token, string password);
         Task<IEnumerable<Usuario>> ObtenerUsuariosPorRolAsync(string roleName);
+        Task<List<Usuario>> ObtenerTodosAsync();
     }
 }

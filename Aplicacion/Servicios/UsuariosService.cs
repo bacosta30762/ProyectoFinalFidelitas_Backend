@@ -7,8 +7,6 @@ using Dominio.Interfaces;
 using Dominio.Repositorios;
 using FluentValidation;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Aplicacion.Servicios
@@ -72,6 +70,40 @@ namespace Aplicacion.Servicios
                 return Resultado<RespuestaLoginDto>.Fallido(new[] { "El usuario no está activo." });
             }
             var roles = await _usuariosRepository.ObtenerRolesAsync(respuestausuario.Valor);
+            var token = _jwtService.GenerarToken(respuestausuario.Valor, roles);
+
+            return Resultado<RespuestaLoginDto>.Exitoso(new RespuestaLoginDto(token));
+        }
+
+        //Iniciar Sesión Admin
+        public async Task<Resultado<RespuestaLoginDto>> LoginAdminAsync(LoginDto loginDto)
+        {
+            // Autenticar usuario
+            var respuestausuario = await _usuariosRepository.AutenticarUsuarioAsync(loginDto.Email, loginDto.Password);
+            if (!respuestausuario.FueExitoso)
+            {
+                return Resultado<RespuestaLoginDto>.Fallido(respuestausuario.Errores);
+            }
+
+            // Verificar si el usuario está activo
+            if (!respuestausuario.Valor.Activo)
+            {
+                return Resultado<RespuestaLoginDto>.Fallido(new[] { "El usuario no está activo." });
+            }
+
+            // Obtener los roles del usuario
+            var roles = await _usuariosRepository.ObtenerRolesAsync(respuestausuario.Valor);
+
+            // Roles permitidos
+            var rolesPermitidos = new[] { "Admin", "Mecanico", "Contador" };
+
+            // Verificar si el usuario tiene al menos un rol permitido
+            if (!roles.Any(r => rolesPermitidos.Contains(r)))
+            {
+                return Resultado<RespuestaLoginDto>.Fallido(new[] { "El usuario no tiene los permisos necesarios para iniciar sesión." });
+            }
+
+            // Generar token
             var token = _jwtService.GenerarToken(respuestausuario.Valor, roles);
 
             return Resultado<RespuestaLoginDto>.Exitoso(new RespuestaLoginDto(token));
@@ -326,6 +358,20 @@ namespace Aplicacion.Servicios
 
             var usuarioDto = new UsuarioDto(usuario.Cedula, usuario.Nombre, usuario.Apellidos, usuario.Email);
             return Resultado<UsuarioDto>.Exitoso(usuarioDto);
+        }
+
+        //Obtener lista de usuarios
+        public async Task<List<ListaUsuarioDto>> ObtenerUsuariosAsync()
+        {
+            var usuarios = await _usuariosRepository.ObtenerTodosAsync();
+
+            return usuarios.Select(u => new ListaUsuarioDto(
+                u.Cedula,
+                u.Nombre,
+                u.Apellidos,
+                u.Email,
+                u.Activo ? "Activo" : "Inactivo"
+            )).ToList();
         }
     }
 }

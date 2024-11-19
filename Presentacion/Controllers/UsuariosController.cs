@@ -1,4 +1,5 @@
 ﻿using Aplicacion.Interfaces;
+using Aplicacion.Servicios;
 using Aplicacion.Usuarios.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -31,7 +32,6 @@ namespace Presentacion.Controllers
         }
 
         [HttpPost("Login")]
-        // [Authorize(Roles = "Usuario")]
         public async Task<IActionResult> Login(LoginDto loginDto) 
         {
             var respuestalogin = await _usuariosService.LoginAsync(loginDto);
@@ -43,12 +43,10 @@ namespace Presentacion.Controllers
             return Ok(respuestalogin.Valor); 
         }
 
-<<<<<<< Updated upstream
         [HttpPost("LoginAdmin")]
-        // [Authorize(Roles = "Admin")]
         public async Task<IActionResult> LoginAdmin(LoginDto loginDto)
         {
-            var respuestalogin = await _usuariosService.LoginAsync(loginDto);
+            var respuestalogin = await _usuariosService.LoginAdminAsync(loginDto);
             if (!respuestalogin.FueExitoso)
             {
                 return Unauthorized(respuestalogin.Errores);
@@ -57,15 +55,6 @@ namespace Presentacion.Controllers
             return Ok(respuestalogin.Valor);
         }
 
-        [HttpGet("Privado")]
-        [Authorize(Roles = "Usuario")]
-        public async Task<IActionResult> Privado()
-        {
-           return Ok();
-        }
-
-=======
->>>>>>> Stashed changes
         [HttpPut("Actualizar/{cedula}")]
         public async Task<IActionResult> ActualizarUsuario([FromRoute]string cedula, [FromBody]ActualizarUsuarioDto dto)
         {
@@ -144,6 +133,13 @@ namespace Presentacion.Controllers
             {
                 return NotFound(new { message = ex.Message });
             }
+        }
+
+        [HttpGet("lista-usuarios")]
+        public async Task<IActionResult> ObtenerUsuarios()
+        {
+            var usuarios = await _usuariosService.ObtenerUsuariosAsync();
+            return Ok(usuarios);
         }
     }
 }

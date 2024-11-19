@@ -1,4 +1,5 @@
-﻿using Dominio.Comun;
+﻿using Aplicacion.DataBase;
+using Dominio.Comun;
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using Microsoft.AspNetCore.Identity;
@@ -10,11 +11,13 @@ namespace Aplicacion.Usuarios
     {
         private readonly UserManager<Usuario> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly DatabaseContext _context;
 
-        public UsuarioRepository(UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager)
+        public UsuarioRepository(UserManager<Usuario> userManager, RoleManager<IdentityRole> roleManager, DatabaseContext context)
         {
             _userManager = userManager;
             _roleManager = roleManager;
+            _context = context;
         }
 
         public async Task<Resultado> RegistrarUsuarioAsync(Usuario usuario, string password)
@@ -102,6 +105,11 @@ namespace Aplicacion.Usuarios
         {
             var usersInRole = await _userManager.GetUsersInRoleAsync(roleName);
             return usersInRole;
+        }
+
+        public async Task<List<Usuario>> ObtenerTodosAsync()
+        {
+            return await _context.Usuarios.ToListAsync();
         }
 
 
