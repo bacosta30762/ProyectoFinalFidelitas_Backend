@@ -20,7 +20,7 @@ namespace Dominio.Entidades
         public Servicio Servicio { get; set; }
 
         // Relación con el mecánico asignado
-        public string MecanicoAsignadoId { get; set; }
+        public string? MecanicoAsignadoId { get; set; }
         public Mecanico MecanicoAsignado { get; set; }
 
     }

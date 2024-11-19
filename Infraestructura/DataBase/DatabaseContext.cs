@@ -38,8 +38,12 @@ namespace Aplicacion.DataBase
                 .WithMany(s => s.Mecanicos)
                 .UsingEntity<Dictionary<string, object>>(
                     "MecanicoServicio",
-                    mec => mec.HasOne<Servicio>().WithMany().HasForeignKey("ServiciosId"),
-                    srv => srv.HasOne<Mecanico>().WithMany().HasForeignKey("MecanicosUsuarioId")
+                    mec => mec.HasOne<Servicio>()
+                              .WithMany()
+                              .HasForeignKey("ServicioId"), // Corrección: Nombre coherente
+                    srv => srv.HasOne<Mecanico>()
+                              .WithMany()
+                              .HasForeignKey("UsuarioId") // Corrección: Nombre coherente
                 );
 
             modelBuilder.Entity<Orden>()

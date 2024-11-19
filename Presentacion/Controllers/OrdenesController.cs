@@ -1,7 +1,5 @@
 ﻿using Aplicacion.Interfaces;
-using Aplicacion.Servicios;
 using Aplicacion.Usuarios.Dtos;
-using Dominio.Comun;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
@@ -58,7 +56,7 @@ namespace Presentacion.Controllers
             }
             catch (Exception ex)
             {
-                return NotFound(new { message = ex.Message }); 
+                return NotFound(new { message = ex.Message });
             }
         }
 

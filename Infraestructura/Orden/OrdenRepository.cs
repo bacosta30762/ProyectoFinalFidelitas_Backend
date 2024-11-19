@@ -109,6 +109,7 @@ namespace Infraestructura.Ordenes
                 .Include(o => o.MecanicoAsignado)
                     .ThenInclude(m => m.Usuario)
                 .Include(o => o.Servicio)
+                .Include(o => o.Cliente)
                 .ToListAsync();
         }
 
