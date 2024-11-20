@@ -95,9 +95,9 @@ namespace Infraestructura.Ordenes
                 // Verificar si hay algún mecánico disponible en esta hora
                 bool hayDisponibilidad = await _context.Ordenes
                     .Where(o => o.ServicioId == servicioId && o.Dia == dia && o.Hora == hora)
-                    .AllAsync(o => !mecanicoIds.Contains(o.MecanicoAsignadoId));
+                    .AnyAsync(o => !mecanicoIds.Contains(o.MecanicoAsignadoId));
 
-                if (hayDisponibilidad)
+                if (!hayDisponibilidad)
                 {
                     horasDisponibles.Add(hora);
                 }
