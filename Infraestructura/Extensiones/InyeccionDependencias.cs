@@ -37,9 +37,6 @@ namespace Aplicacion.Extensiones
             services.AddScoped<ISuscripcionRepository, SuscripcionRepository>();
             services.AddScoped<IMarketingService, MarketingService>();
 
-            services.AddScoped<IInventarioService, InventarioService>();
-            services.AddScoped<IComentariosValoracionesService, ComentaioriosValoracionesService>();
-
 
             //services.AddIdentityCore<Usuario, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
 
