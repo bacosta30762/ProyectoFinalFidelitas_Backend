@@ -30,7 +30,6 @@ namespace Aplicacion.DataBase
                 .WithOne()
                 .HasForeignKey<Mecanico>(m => m.UsuarioId)
                 .OnDelete(DeleteBehavior.Restrict); // Evita la eliminación en cascada
-            base.OnModelCreating(modelBuilder);
 
             // Configuración de la relación muchos a muchos entre Mecanicos y Servicios
             modelBuilder.Entity<Mecanico>()

@@ -44,19 +44,6 @@ namespace Infraestructura.Ordenes
             return await _context.Ordenes.FindAsync(id);
         }
 
-        public async Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
-        {
-            // Buscar el mecánico que puede atender el servicio y no tenga órdenes asignadas en la fecha y hora especificadas
-            var mecanicoDisponible = await _context.Mecanicos
-                .Where(m => m.Servicios.Any(s => s.Id == idServicio)) // Mecánicos que pueden realizar el servicio
-                .Where(m => !m.Ordenes
-                    .Any(o => o.Dia == dia && o.Hora == hora && o.Estado == "Pendiente")) // Mecánicos sin órdenes pendientes en esa hora
-                .OrderBy(m => m.Ordenes.Count(o => o.Dia == dia)) // Ordenar por la cantidad de órdenes asignadas en el día
-                .FirstOrDefaultAsync(); // Obtener el primer mecánico disponible
-
-            return mecanicoDisponible;
-        }
-
         /*public async Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
         {
             // Buscar el mecánico que puede atender el servicio y tiene menos órdenes en la fecha y hora especificadas
@@ -68,6 +55,19 @@ namespace Infraestructura.Ordenes
 
             return mecanicoDisponible;
         }*/
+
+        public async Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
+        {
+            // Buscar el mecánico que puede atender el servicio y no tiene órdenes asignadas para la fecha y hora especificadas
+            var mecanicoDisponible = await _context.Mecanicos
+                .Where(m => m.Servicios.Any(s => s.Id == idServicio)) // Mecánicos que pueden realizar el servicio
+                .Where(m => !m.Ordenes
+                    .Any(o => o.Dia == dia && o.Hora == hora && o.MecanicoAsignadoId == m.UsuarioId)) // Verificar que no tenga órdenes asignadas para esa hora y día
+                .OrderBy(m => m.Ordenes.Count(o => o.Dia == dia)) // Ordenar por la cantidad de órdenes asignadas en el día
+                .FirstOrDefaultAsync(); // Obtener el primer mecánico disponible
+
+            return mecanicoDisponible;
+        }
 
         public async Task<Orden?> ObtenerOrdenPorNumeroAsync(int numeroOrden)
         {

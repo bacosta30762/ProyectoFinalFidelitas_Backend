@@ -48,11 +48,6 @@ namespace Infraestructura.Database.Migrations
                 oldClrType: typeof(string),
                 oldType: "nvarchar(450)");
 
-            migrationBuilder.AddColumn<string>(
-                name: "MecanicoUsuarioId",
-                table: "Ordenes",
-                type: "nvarchar(450)",
-                nullable: true);
 
             migrationBuilder.AddPrimaryKey(
                 name: "PK_MecanicoServicio",
