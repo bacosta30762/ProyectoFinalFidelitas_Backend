@@ -27,6 +27,7 @@ namespace Aplicacion.Servicios
                 return Resultado.Fallido(new[] { "El usuario no está autenticado." });
             }
 
+            // Verificar la disponibilidad del mecánico
             var mecanicodisponible = await _ordenRepository.ObtenerMecanicoDisponibleAsync(dto.ServicioId, dto.Dia, dto.Hora);
             if (mecanicodisponible == null)
             {
