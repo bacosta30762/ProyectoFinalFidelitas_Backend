@@ -4,6 +4,7 @@ using Dominio.Comun;
 using Dominio.Entidades;
 using Dominio.Repositorios;
 
+
 namespace Aplicacion.Servicios
 {
     public class OrdenService : IOrdenService
@@ -37,7 +38,7 @@ namespace Aplicacion.Servicios
             {
                 Hora = dto.Hora,
                 Dia = dto.Dia,
-                MecanicoAsignadoId = mecanicodisponible.UsuarioId,
+                MecanicoAsignadoId = mecanicodisponible,
                 Estado = "Pendiente",
                 PlacaVehiculo = dto.PlacaVehiculo,
                 ClienteId = clienteid,

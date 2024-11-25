@@ -49,24 +49,29 @@ namespace Infraestructura.Ordenes
             // Buscar el mecánico que puede atender el servicio y tiene menos órdenes en la fecha y hora especificadas
             var mecanicoDisponible = await _context.Mecanicos
                 .Where(m => m.Servicios.Any(s => s.Id == idServicio)) // Mecánicos que pueden realizar el servicio
-                .Where(m => !m.Ordenes.Any(o => o.Dia == dia && o.Hora == hora)) // Que no tengan una orden en ese día y hora
+                .Where(m => !m.Ordenes.Any(o => o.Dia == dia && o.Hora == hora && o.ServicioId == idServicio)) // Que no tengan una orden en ese día y hora
                 .OrderBy(m => m.Ordenes.Count(o => o.Dia == dia)) // Ordenar por la cantidad de órdenes asignadas en el día
                 .FirstOrDefaultAsync(); // Obtener el primer mecánico disponible
 
             return mecanicoDisponible;
         }*/
 
-        public async Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
+        public async Task<string?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
         {
-            // Buscar el mecánico que puede atender el servicio y no tiene órdenes asignadas para la fecha y hora especificadas
-            var mecanicoDisponible = await _context.Mecanicos
-                .Where(m => m.Servicios.Any(s => s.Id == idServicio)) // Mecánicos que pueden realizar el servicio
-                .Where(m => !m.Ordenes
-                    .Any(o => o.Dia == dia && o.Hora == hora && o.MecanicoAsignadoId == m.UsuarioId)) // Verificar que no tenga órdenes asignadas para esa hora y día
-                .OrderBy(m => m.Ordenes.Count(o => o.Dia == dia)) // Ordenar por la cantidad de órdenes asignadas en el día
-                .FirstOrDefaultAsync(); // Obtener el primer mecánico disponible
+            var mecanicosdelServicio = await _context.Mecanicos
+                .Where(m => m.Servicios.Any(s => s.Id == idServicio))
+                .Select(m => m.UsuarioId)
+                .ToListAsync();
 
-            return mecanicoDisponible;
+            // Verificar si hay algún mecánico disponible en esta hora
+            var mecanicosOcupados = await _context.Ordenes
+                .Where(o => o.ServicioId == idServicio && o.Dia == dia && o.Hora == hora)
+                .Select(o => o.MecanicoAsignadoId).ToListAsync();
+
+            var mecanicosDisponibles = mecanicosdelServicio.Except(mecanicosOcupados);
+
+            return mecanicosDisponibles.FirstOrDefault();
+
         }
 
         public async Task<Orden?> ObtenerOrdenPorNumeroAsync(int numeroOrden)
@@ -83,7 +88,7 @@ namespace Infraestructura.Ordenes
             var horas = Enumerable.Range(horaInicio, horaFin - horaInicio + 1).ToList();
 
             // Obtener los IDs de los mecánicos que pueden atender el servicio solicitado
-            var mecanicoIds = await _context.Mecanicos
+            var mecanicosdelServicio = await _context.Mecanicos
                 .Where(m => m.Servicios.Any(s => s.Id == servicioId))
                 .Select(m => m.UsuarioId)
                 .ToListAsync();
@@ -93,11 +98,13 @@ namespace Infraestructura.Ordenes
             foreach (var hora in horas)
             {
                 // Verificar si hay algún mecánico disponible en esta hora
-                bool hayDisponibilidad = await _context.Ordenes
+                var mecanicosOcupados = await _context.Ordenes
                     .Where(o => o.ServicioId == servicioId && o.Dia == dia && o.Hora == hora)
-                    .AnyAsync(o => !mecanicoIds.Contains(o.MecanicoAsignadoId));
+                    .Select(o => o.MecanicoAsignadoId).ToListAsync();
 
-                if (!hayDisponibilidad)
+                var mecanicosDisponibles = mecanicosdelServicio.Except(mecanicosOcupados);
+
+                if (mecanicosDisponibles.Any())
                 {
                     horasDisponibles.Add(hora);
                 }

@@ -16,7 +16,7 @@ public class Startup
     public void ConfigureServices(IServiceCollection services)
     {
         services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Context")));
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
             
 
         // Agregar servicios al contenedor
