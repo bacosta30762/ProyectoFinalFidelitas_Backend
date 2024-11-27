@@ -130,5 +130,33 @@ namespace Presentacion.Controllers
 
             return Ok(resultado.Valor);
         }
+
+        [HttpPost("bloquear-dia")]
+        public async Task<IActionResult> BloquearDia([FromBody] BloquearDiaDto request)
+        {
+            try
+            {
+                await _ordenService.BloquearDiaAsync(request);
+                return Ok(new { mensaje = "Día bloqueado exitosamente." });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
+        }
+
+        [HttpPost("desbloquear-dia")]
+        public async Task<IActionResult> DesbloquearDia([FromBody] BloquearDiaDto request)
+        {
+            try
+            {
+                await _ordenService.DesbloquearDiaAsync(request);
+                return Ok(new { mensaje = "Día desbloqueado exitosamente." });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
+        }
     }
 }

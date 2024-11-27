@@ -152,5 +152,25 @@ namespace Aplicacion.Servicios
             return Resultado<List<ListarOrdenMecanicoDto>>.Exitoso(ordenesDto);
         }
 
+        public async Task BloquearDiaAsync(BloquearDiaDto dto)
+        {
+            if (!DateOnly.TryParse(dto.Dia, out var dia))
+            {
+                throw new ArgumentException("Formato de día inválido. Use 'yyyy-MM-dd'.");
+            }
+
+            await _ordenRepository.BloquearDiaAsync(dia);
+        }
+
+        public async Task DesbloquearDiaAsync(BloquearDiaDto dto)
+        {
+            if (!DateOnly.TryParse(dto.Dia, out var dia))
+            {
+                throw new ArgumentException("Formato de día inválido. Use 'yyyy-MM-dd'.");
+            }
+
+            await _ordenRepository.DesbloquearDiaAsync(dia);
+        }
+
     }
 }

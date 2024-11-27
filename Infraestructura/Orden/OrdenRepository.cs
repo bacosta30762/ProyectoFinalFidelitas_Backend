@@ -44,18 +44,6 @@ namespace Infraestructura.Ordenes
             return await _context.Ordenes.FindAsync(id);
         }
 
-        /*public async Task<Mecanico?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
-        {
-            // Buscar el mecánico que puede atender el servicio y tiene menos órdenes en la fecha y hora especificadas
-            var mecanicoDisponible = await _context.Mecanicos
-                .Where(m => m.Servicios.Any(s => s.Id == idServicio)) // Mecánicos que pueden realizar el servicio
-                .Where(m => !m.Ordenes.Any(o => o.Dia == dia && o.Hora == hora && o.ServicioId == idServicio)) // Que no tengan una orden en ese día y hora
-                .OrderBy(m => m.Ordenes.Count(o => o.Dia == dia)) // Ordenar por la cantidad de órdenes asignadas en el día
-                .FirstOrDefaultAsync(); // Obtener el primer mecánico disponible
-
-            return mecanicoDisponible;
-        }*/
-
         public async Task<string?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
         {
             var mecanicosdelServicio = await _context.Mecanicos
@@ -81,6 +69,14 @@ namespace Infraestructura.Ordenes
 
         public async Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia)
         {
+            // Verificar si el día está bloqueado
+            var diaBloqueado = await _context.DiasBloqueados.AnyAsync(db => db.Dia == dia);
+            if (diaBloqueado)
+            {
+                // Si el día está bloqueado, no hay horas disponibles
+                return new List<int>();
+            }
+
             int horaInicio = 8;
             int horaFin = 16;
 
@@ -140,6 +136,35 @@ namespace Infraestructura.Ordenes
                 .Include(o => o.Servicio)
                 .Where(o => o.MecanicoAsignadoId == mecanicoId)
                 .ToListAsync();
+        }
+
+        public async Task BloquearDiaAsync(DateOnly dia)
+        {
+            // Verificar si ya hay órdenes para el día
+            var ordenesDelDia = await _context.Ordenes.Where(o => o.Dia == dia).ToListAsync();
+
+            if (ordenesDelDia.Any())
+            {
+                // Eliminar órdenes si existen
+                _context.Ordenes.RemoveRange(ordenesDelDia);
+                await _context.SaveChangesAsync();
+            }
+
+            // Bloquear el día
+            var diaBloqueado = new DiaBloqueado { Dia = dia };
+            await _context.DiasBloqueados.AddAsync(diaBloqueado);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DesbloquearDiaAsync(DateOnly dia)
+        {
+            // Eliminar el día bloqueado si existe
+            var diaBloqueado = await _context.DiasBloqueados.FirstOrDefaultAsync(db => db.Dia == dia);
+            if (diaBloqueado != null)
+            {
+                _context.DiasBloqueados.Remove(diaBloqueado);
+                await _context.SaveChangesAsync();
+            }
         }
 
     }

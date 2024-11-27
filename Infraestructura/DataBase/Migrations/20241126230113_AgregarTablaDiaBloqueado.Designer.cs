@@ -4,16 +4,19 @@ using Aplicacion.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace Aplicacion.DataBase.Migrations
+namespace Infraestructura.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241126230113_AgregarTablaDiaBloqueado")]
+    partial class AgregarTablaDiaBloqueado
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,22 +50,6 @@ namespace Aplicacion.DataBase.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Boletines");
-                });
-
-            modelBuilder.Entity("Dominio.Entidades.DiaBloqueado", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateOnly>("Dia")
-                        .HasColumnType("date");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("DiasBloqueados");
                 });
 
             modelBuilder.Entity("Dominio.Entidades.Mecanico", b =>

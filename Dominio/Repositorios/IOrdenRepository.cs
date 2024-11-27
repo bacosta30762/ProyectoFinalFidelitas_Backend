@@ -5,7 +5,9 @@ namespace Dominio.Repositorios
     public interface IOrdenRepository
     {
         Task ActualizarAsync(Orden orden);
+        Task BloquearDiaAsync(DateOnly dia);
         Task CrearAsync(Orden orden);
+        Task DesbloquearDiaAsync(DateOnly dia);
         Task EliminarAsync(Orden orden);
         Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia);
         Task<string?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora);
