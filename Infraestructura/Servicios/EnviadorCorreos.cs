@@ -1,7 +1,9 @@
-﻿using Dominio.Interfaces;
+﻿using Dominio.Comun;
+using Dominio.Interfaces;
+using MailKit.Net.Smtp;
 using Microsoft.Extensions.Configuration;
-using System.Net;
-using System.Net.Mail;
+using Microsoft.Extensions.DependencyInjection;
+using MimeKit;
 
 namespace Infraestructura.Servicios
 {
@@ -9,30 +11,45 @@ namespace Infraestructura.Servicios
 
     {
         private readonly IConfiguration _config;
+        private readonly IMotorDePlantillas _motorDePlantillas;
 
-        public EnviadorCorreos(IConfiguration config)
+        public EnviadorCorreos(IConfiguration config, IMotorDePlantillas motorDePlantillas)
         {
             _config = config;
+            _motorDePlantillas = motorDePlantillas;
         }
+
 
         public async Task SendEmailAsync(string to, string subject, string body)
         {
-            var message = new MailMessage();
-            message.To.Add(new MailAddress(to));
-            message.From = new MailAddress(_config["Smtp:Direcion"]);
+            var message = new MimeMessage();
+            message.From.Add(new MailboxAddress("Servicentro RyM",_config["Smtp:Direcion"]));
+            message.To.Add(new MailboxAddress("", to));
             message.Subject = subject;
-            message.Body = body;
-            message.IsBodyHtml = true;
-
-            using (var client = new SmtpClient(_config["Smtp:Servidor"], int.Parse(_config["Smtp:Puerto"])))
+            message.Body = new TextPart("html")
             {
-                client.Credentials = new NetworkCredential(_config["Smtp:Usuario"], _config["Smtp:Password"]);
-                client.EnableSsl = true; 
-                await client.SendMailAsync(message);
+                Text = body
+            };
+            using (var client = new SmtpClient())
+            {
+                await client.ConnectAsync(_config["Smtp:Servidor"], int.Parse(_config["Smtp:Puerto"]), MailKit.Security.SecureSocketOptions.StartTls);
+                await client.AuthenticateAsync(_config["Smtp:Usuario"], _config["Smtp:Password"]);
+                await client.SendAsync(message);
+                await client.DisconnectAsync(true);
             }
         }
+
+        public async Task EnviarNotificacionAsync(string to, Notificacion notificacion)
+        {
+            var body = await _motorDePlantillas.RenderizarPlantillaAsync("Notificacion", notificacion);
+
+            await SendEmailAsync(to, notificacion.Asunto, body);
+             
+        }
     }
+
 }
+
 
 
 

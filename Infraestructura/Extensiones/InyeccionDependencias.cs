@@ -31,6 +31,7 @@ namespace Aplicacion.Extensiones
             services.AddScoped<IEnviadorCorreos, EnviadorCorreos>();
             services.AddScoped<IOrdenRepository, OrdenRepository>();
             services.AddScoped<IMecanicoRepository, MecanicoRepository>();
+            services.AddScoped<IMotorDePlantillas, MotorDePlantillas>();
 
             services.AddScoped<IBoletinRepository, BoletinRepository>();
             services.AddScoped<IResenaRepository, ResenaRepository>();

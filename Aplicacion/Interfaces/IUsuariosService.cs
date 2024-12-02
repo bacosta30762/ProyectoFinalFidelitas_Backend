@@ -19,5 +19,7 @@ namespace Aplicacion.Interfaces
         Task<Resultado<UsuarioDto>> ObtenerInformacionUsuario(string cedula);
         Task<List<ListaUsuarioDto>> ObtenerUsuariosAsync();
         Task<Resultado<RespuestaLoginDto>> LoginAdminAsync(LoginDto loginDto);
+        string? ObtenerUsuarioCorreoAutenticado();
+        string? ObtenerUsuarioNombreAutenticado();
     }
 }

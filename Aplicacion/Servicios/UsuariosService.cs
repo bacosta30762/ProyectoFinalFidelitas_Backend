@@ -346,6 +346,28 @@ namespace Aplicacion.Servicios
             return usuarioid;
         }
 
+        public string? ObtenerUsuarioCorreoAutenticado()
+        {
+            var usuario = _httpContextAccessor.HttpContext?.User;
+            if (usuario == null)
+            {
+                return null;
+            }
+            var usuarioemail = usuario.Claims.FirstOrDefault(u => u.Type == ClaimTypes.Email)?.Value;
+            return usuarioemail;
+        }
+
+        public string? ObtenerUsuarioNombreAutenticado()
+        {
+            var usuario = _httpContextAccessor.HttpContext?.User;
+            if (usuario == null)
+            {
+                return null;
+            }
+            var usuarioemail = usuario.Claims.FirstOrDefault(u => u.Type == ClaimTypes.Name)?.Value;
+            return usuarioemail;
+        }
+
         //Obtener información del usuario
         public async Task<Resultado<UsuarioDto>> ObtenerInformacionUsuario(string cedula)
         {

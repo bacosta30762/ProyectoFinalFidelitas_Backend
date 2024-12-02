@@ -2,6 +2,7 @@
 using Aplicacion.Usuarios.Dtos;
 using Dominio.Comun;
 using Dominio.Entidades;
+using Dominio.Interfaces;
 using Dominio.Repositorios;
 
 
@@ -11,17 +12,22 @@ namespace Aplicacion.Servicios
     {
         private readonly IOrdenRepository _ordenRepository;
         private readonly IUsuariosService _usuariosService;
+        private readonly IEnviadorCorreos _enviadorCorreos;
+        private readonly IUsuarioRepository _usuariosRepository;
 
-        public OrdenService(IOrdenRepository ordenRepository, IUsuariosService usuariosService)
+        public OrdenService(IOrdenRepository ordenRepository, IUsuariosService usuariosService, IEnviadorCorreos enviadorCorreos, IUsuarioRepository usuariosRepository)
         {
             _ordenRepository = ordenRepository;
             _usuariosService = usuariosService;
+            _enviadorCorreos = enviadorCorreos;
+            _usuariosRepository = usuariosRepository;
         }
 
         public async Task<Resultado> CrearOrdenAsync(CrearOrdenDto dto)
         {
             //Obtener Id del Usuario logueado
             var clienteid = _usuariosService.ObtenerUsuarioIdAutenticado();
+            var clientecorreo = _usuariosService.ObtenerUsuarioCorreoAutenticado();
 
             if (string.IsNullOrEmpty(clienteid)) // Verificar si el clienteid es nulo o vacío
             {
@@ -45,7 +51,18 @@ namespace Aplicacion.Servicios
                 ServicioId = dto.ServicioId,
             };
 
+            var correomecanico = await _usuariosRepository.ObtenerCorreoPorIdAsync(mecanicodisponible);
+
             await _ordenRepository.CrearAsync(orden);
+
+            var notificacion = new Notificacion
+            (
+                "Confirmación de la cita",
+                _usuariosService.ObtenerUsuarioNombreAutenticado()??"Estimado Usuario",
+                GeneradorMensajes.ConfirmacionCita(dto)
+            );
+
+            await _enviadorCorreos.EnviarNotificacionAsync(clientecorreo, notificacion);
 
             return Resultado.Exitoso();
 

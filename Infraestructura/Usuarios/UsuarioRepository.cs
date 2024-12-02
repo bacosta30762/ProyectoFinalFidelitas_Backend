@@ -112,6 +112,15 @@ namespace Aplicacion.Usuarios
             return await _context.Usuarios.ToListAsync();
         }
 
+        public async Task<string?> ObtenerCorreoPorIdAsync(string id)
+        {
+            return (await _context.Usuarios.FindAsync(id))?.Email;
+        }
+
+        public async Task<string?> ObtenerNombrePorIdAsync(string id)
+        {
+            return (await _context.Usuarios.FindAsync(id))?.Nombre;
+        }
 
     }
 }
