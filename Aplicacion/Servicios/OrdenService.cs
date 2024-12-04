@@ -55,14 +55,22 @@ namespace Aplicacion.Servicios
 
             await _ordenRepository.CrearAsync(orden);
 
-            var notificacion = new Notificacion
+            var notificacionusuario = new Notificacion
             (
-                "Confirmación de la cita",
                 _usuariosService.ObtenerUsuarioNombreAutenticado()??"Estimado Usuario",
-                GeneradorMensajes.ConfirmacionCita(dto)
+                "Confirmación de la cita",
+                GeneradorMensajes.ConfirmacionCitaUsuario(dto)
             );
 
-            await _enviadorCorreos.EnviarNotificacionAsync(clientecorreo, notificacion);
+            var notificacionmecanico = new Notificacion
+            (
+                await _usuariosRepository.ObtenerNombrePorIdAsync(mecanicodisponible) ?? "Estimado empleado",
+                "Confirmación de servicio",
+                GeneradorMensajes.ConfirmacionCitaMecanico(dto)
+            );
+
+            await _enviadorCorreos.EnviarNotificacionAsync(clientecorreo, notificacionusuario);
+            await _enviadorCorreos.EnviarNotificacionAsync(correomecanico, notificacionmecanico);
 
             return Resultado.Exitoso();
 
@@ -77,14 +85,42 @@ namespace Aplicacion.Servicios
         public async Task EliminarOrdenPorIdAsync(int id)
         {
             var orden = await _ordenRepository.ObtenerOrdenPorIdAsync(id);
-            if (orden != null)
-            {
-                await _ordenRepository.EliminarAsync(orden);
-            }
-            else
+            if (orden == null)
             {
                 throw new Exception("Orden no encontrada");
             }
+
+            // Obtener correos del cliente y mecánico
+            var clienteCorreo = await _usuariosRepository.ObtenerCorreoPorIdAsync(orden.ClienteId);
+            var mecanicoCorreo = await _usuariosRepository.ObtenerCorreoPorIdAsync(orden.MecanicoAsignadoId);
+
+            // Crear notificaciones
+            var notificacionUsuario = new Notificacion
+            (
+                await _usuariosRepository.ObtenerNombrePorIdAsync(orden.ClienteId) ?? "Estimado usuario",
+                "Cancelación de la cita",
+                GeneradorMensajes.EliminarCitaUsuario(new NotificacionOrdenDto(
+                     orden.Hora,
+                     orden.Dia
+                ))
+            );
+
+            var notificacionMecanico = new Notificacion
+            (
+                await _usuariosRepository.ObtenerNombrePorIdAsync(orden.MecanicoAsignadoId) ?? "Estimado empleado",
+                "Cancelación de servicio",
+                GeneradorMensajes.EliminarCitaMecanico(new NotificacionOrdenDto(
+                    orden.Hora,
+                    orden.Dia
+                ))
+            );
+
+            // Enviar correos
+            await _enviadorCorreos.EnviarNotificacionAsync(clienteCorreo, notificacionUsuario);
+            await _enviadorCorreos.EnviarNotificacionAsync(mecanicoCorreo, notificacionMecanico);
+
+            // Eliminar la orden
+            await _ordenRepository.EliminarAsync(orden);
         }
 
         public async Task<Resultado> AsignarMecanicoAsync(int numeroOrden, string mecanicoId)

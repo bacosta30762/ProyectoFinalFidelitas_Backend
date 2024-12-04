@@ -302,9 +302,15 @@ namespace Aplicacion.Servicios
             }
 
             var token = await _usuariosRepository.GenerarTokenRecuperacionPasswordAsync(usuario);
-            string mensajeCorreo = $"Su token de recuperación es: {token}";
 
-            await _enviadorCorreos.SendEmailAsync(usuario.Email, "Recuperar Contraseña", mensajeCorreo);
+            var notificacion = new Notificacion
+            (
+                await _usuariosRepository.ObtenerNombrePorIdAsync(usuario.Id) ?? "Estimado usuario",
+                "Recuperación Contraseña",
+                GeneradorMensajes.RecuperarPassword(token)
+            );
+
+            await _enviadorCorreos.EnviarNotificacionAsync(usuario.Email, notificacion);
 
             return Resultado.Exitoso();
         }
