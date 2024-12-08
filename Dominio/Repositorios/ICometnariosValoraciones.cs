@@ -16,5 +16,6 @@ namespace Dominio.Repositorios
         Task AgregarAsync(ComentariosValoraciones comentarioValoracion);
         Task ActualizarAsync(ComentariosValoraciones comentarioValoracion);
         Task EliminarAsync(int id);
+        Task AddAsync(ComentariosValoraciones comentarioValoracion);
     }
 }
