@@ -1,4 +1,6 @@
-﻿using Dominio.Repositorios;
+﻿using Aplicacion.Interfaces;
+using Dominio.Entidades;
+using Dominio.Repositorios;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Aplicacion.Servicios
 {
-    internal class InventarioService : IInventarioService
+    public class InventarioService : IInventarioService
     {
         private readonly IInventarioRepository _inventarioRepository;
 

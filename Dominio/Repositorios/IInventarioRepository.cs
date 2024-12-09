@@ -9,11 +9,7 @@ namespace Dominio.Repositorios
 {
     public interface IInventarioRepository
     {
-        Task<IEnumerable<Inventario>> ObtenerTodosAsync();
-        Task<Inventario> ObtenerIdAsync(int id);
-        Task AgregarAsync(Inventario inventario);
-        Task ModificarAsync(Inventario inventario);
-        Task EliminarAsync(int id);
+        
     }
 
 }

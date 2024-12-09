@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio.Entidades
 {
-    internal class ComentariosValoraciones
+    public class ComentariosValoraciones
     {
         public DateTime fecha { get; set; }
         public string cliente { get; set; }
