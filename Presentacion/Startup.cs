@@ -2,6 +2,7 @@
 using Aplicacion.Extensiones;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Text.Json;
 
 public class Startup
 {
@@ -80,6 +81,9 @@ public class Startup
             .AddJsonOptions(options =>
             {
                 options.JsonSerializerOptions.Converters.Add(new DateOnlyJsonConverter());
+                // Configuración adicional para manejar caracteres especiales
+                options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+                options.JsonSerializerOptions.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
             });
     }
 
