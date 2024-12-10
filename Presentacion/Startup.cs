@@ -96,6 +96,18 @@ public class Startup
             app.UseSwaggerUI();
         }
 
+        // Middleware para manejar solicitudes OPTIONS (Preflight)
+        app.Use(async (context, next) =>
+        {
+            if (context.Request.Method == HttpMethods.Options)
+            {
+                context.Response.StatusCode = StatusCodes.Status204NoContent;
+                return;
+            }
+
+            await next();
+        });
+
         app.UseCors("PermitirFrontend"); // Aplicar política de CORS
 
         // Asegúrate de poner UseRouting antes de UseEndpoints
