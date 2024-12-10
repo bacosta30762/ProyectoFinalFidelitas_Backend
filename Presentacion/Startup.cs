@@ -101,6 +101,9 @@ public class Startup
         {
             if (context.Request.Method == HttpMethods.Options)
             {
+                context.Response.Headers.Add("Access-Control-Allow-Origin", "https://bacosta30762.github.io");
+                context.Response.Headers.Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
+                context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
                 context.Response.StatusCode = StatusCodes.Status204NoContent;
                 return;
             }
