@@ -1,5 +1,6 @@
 ﻿using Aplicacion.DataBase;
 using Dominio.Repositorios;
+using Dominio.Entidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructura.Inventario
 {
-    internal class InventarioRepository : IInventarioRepository
+    public class InventarioRepository : IInventarioRepository
     {
         private readonly DatabaseContext _context;
 

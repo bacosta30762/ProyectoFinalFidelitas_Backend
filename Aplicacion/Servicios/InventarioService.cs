@@ -13,19 +13,37 @@ namespace Aplicacion.Servicios
     {
         private readonly IInventarioRepository _inventarioRepository;
 
-        public InventarioService(IInventarioRepository inventarioRepository)
+      
+
+       
+        Task<IEnumerable<Inventario>> IInventarioService.GetAllAsync()
         {
-            _inventarioRepository = inventarioRepository;
+            throw new NotImplementedException();
         }
 
-        public async Task<IEnumerable<Inventario>> GetAllAsync()
+        Task<Inventario> IInventarioService.GetByIdAsync(int id)
         {
-            return await _inventarioRepository.GetAllAsync();
+            throw new NotImplementedException();
         }
 
-        public async Task AddAsync(Inventario inventario)
+        Task<IEnumerable<Inventario>> IInventarioService.GetByCategoriaAsync(string categoria)
         {
-            await _inventarioRepository.AddAsync(inventario);
+            throw new NotImplementedException();
+        }
+
+        Task IInventarioService.AddAsync(Inventario producto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IInventarioService.UpdateAsync(Inventario producto)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IInventarioService.DeleteAsync(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

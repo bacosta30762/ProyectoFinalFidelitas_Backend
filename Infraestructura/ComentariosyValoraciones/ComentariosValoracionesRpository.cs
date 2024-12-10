@@ -1,5 +1,8 @@
 ﻿using Aplicacion.DataBase;
+using Aplicacion.Interfaces;
+using Dominio.Entidades;
 using Dominio.Repositorios;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Infraestructura.ComentariosyValoraciones
 {
-     internal class ComentariosValoracionesRepository : IComentariosValoracionesRepository
+ public class ComentariosValoracionesRepository : IComentariosValoracionesRepository
     {
         private readonly DatabaseContext _context;
 
@@ -61,5 +64,45 @@ namespace Infraestructura.ComentariosyValoraciones
                 _context.Set<ComentariosValoraciones>().Remove(entity);
                 await _context.SaveChangesAsync();
             }
+        }
+
+        Task<IEnumerable<ComentariosValoraciones>> IComentariosValoracionesRepository.ObtenerTodosAsync()
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<ComentariosValoraciones> IComentariosValoracionesRepository.ObtenerporIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<ComentariosValoraciones>> IComentariosValoracionesRepository.ObtenerporyClienteAsync(string cliente)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task<IEnumerable<ComentariosValoraciones>> IComentariosValoracionesRepository.ObtenerporOrdenAsync(int orden)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IComentariosValoracionesRepository.AgregarAsync(ComentariosValoraciones comentarioValoracion)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IComentariosValoracionesRepository.ActualizarAsync(ComentariosValoraciones comentarioValoracion)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task EliminarAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        Task IComentariosValoracionesRepository.AddAsync(ComentariosValoraciones comentarioValoracion)
+        {
+            throw new NotImplementedException();
         }
     }
