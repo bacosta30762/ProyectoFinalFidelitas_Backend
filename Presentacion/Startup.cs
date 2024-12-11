@@ -15,11 +15,7 @@ public class Startup
 
     // Configuración de servicios
     public void ConfigureServices(IServiceCollection services)
-    {
-        services.AddDbContext<DatabaseContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("Context")));
-            
-
+    {        
         // Agregar servicios al contenedor
         services.AddControllers();
         services.AddEndpointsApiExplorer();
