@@ -7,11 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="PlantillasCorreo\Notificacion.cshtml" />
+    <Content Remove="wwwroot\PlantillasCorreo\Notificacion.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="PlantillasCorreo\Notificacion.cshtml" />
+    <None Include="wwwroot\PlantillasCorreo\Notificacion.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
