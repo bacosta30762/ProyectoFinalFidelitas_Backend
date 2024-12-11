@@ -85,7 +85,7 @@ public class Startup
                 options.JsonSerializerOptions.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
                 options.JsonSerializerOptions.Encoder = System.Text.Encodings.Web.JavaScriptEncoder.UnsafeRelaxedJsonEscaping;
             });
-    }
+}
 
     // Configuración del pipeline HTTP
     public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -97,7 +97,7 @@ public class Startup
         }
 
         // Middleware para manejar solicitudes OPTIONS (Preflight)
-        app.Use(async (context, next) =>
+       app.Use(async (context, next) =>
         {
             if (context.Request.Method == HttpMethods.Options)
             {
