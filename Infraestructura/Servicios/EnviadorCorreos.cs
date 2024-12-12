@@ -23,7 +23,7 @@ namespace Infraestructura.Servicios
         public async Task SendEmailAsync(string to, string subject, string body)
         {
             var message = new MimeMessage();
-            message.From.Add(new MailboxAddress("Servicentro RyM",_config["Smtp:Direcion"]));
+            message.From.Add(new MailboxAddress("Servicentro RyM", _config["Smtp:Direcion"]));
             message.To.Add(new MailboxAddress("", to));
             message.Subject = subject;
             message.Body = new TextPart("html")
@@ -41,9 +41,9 @@ namespace Infraestructura.Servicios
 
         public async Task EnviarNotificacionAsync(string to, Notificacion notificacion)
         {
-            var body = await _motorDePlantillas.RenderizarPlantillaAsync("Notificacion", notificacion);
+            //var body = await _motorDePlantillas.RenderizarPlantillaAsync("Notificacion", notificacion);
 
-            await SendEmailAsync(to, notificacion.Asunto, body);
+            await SendEmailAsync(to, notificacion.Asunto, notificacion.Mensaje);
              
         }
     }

@@ -5,10 +5,11 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
 	<StaticWebAssetsEnabled>true</StaticWebAssetsEnabled>
+	<EnableDefaultContentItems>false</EnableDefaultContentItems>
   </PropertyGroup>
 
 	<ItemGroup>
-		<None Include="wwwroot\**" CopyToPublishDirectory="PreserveNewest" />
+		<Content Include="wwwroot\**" CopyToPublishDirectory="PreserveNewest" />
 	</ItemGroup>
 	
   <ItemGroup>
