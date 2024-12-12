@@ -112,7 +112,7 @@ namespace Infraestructura.Servicios
         {
             var contenido = Plantilla.Replace("@Model.Destinatario", notificacion.Destinatario)
                 .Replace("@Model.Mensaje", notificacion.Mensaje)
-                .Replace("@Model.asunto", notificacion.Asunto);
+                .Replace("@Model.Asunto", notificacion.Asunto);
             
             return contenido;
         }
