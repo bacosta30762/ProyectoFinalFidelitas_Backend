@@ -6,13 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
-  <ItemGroup>
-	<Folder Include="wwwroot\PlantillasCorreo\" />
-  </ItemGroup>
-	
-  <ItemGroup>
-    <None Include="wwwroot\PlantillasCorreo\Notificacion.cshtml" />
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="wwwroot**" CopyToPublishDirectory="PreserveNewest" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.8">
