@@ -43,7 +43,9 @@ namespace Infraestructura.Servicios
         {
             //var body = await _motorDePlantillas.RenderizarPlantillaAsync("Notificacion", notificacion);
 
-            await SendEmailAsync(to, notificacion.Asunto, notificacion.Mensaje);
+            var body =  _motorDePlantillas.ObtenerPlantilla(notificacion);
+
+            await SendEmailAsync(to, notificacion.Asunto, body);
              
         }
     }
