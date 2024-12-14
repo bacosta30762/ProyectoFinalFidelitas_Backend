@@ -13,7 +13,6 @@ namespace Dominio.Entidades
         public int Id { get; set; }
         public string Contenido { get; set; }
         public DateTime FechaCreacion { get; set; }
-        public int BoletinId { get; set; }
-        public Boletin Boletin { get; set; }
+        public string? Cedula { get; set; }
     }
 }

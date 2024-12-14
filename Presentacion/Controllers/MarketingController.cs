@@ -20,7 +20,7 @@ namespace Presentacion.Controllers
 
 
         [HttpPost("CrearBoletin")]
-        [Authorize(Roles = "Admin")]
+       
         public async Task<IActionResult> CrearBoletin([FromBody] Boletin boletin)
         {
             var result = await _marketingService.CrearBoletinAsync(boletin);
@@ -36,7 +36,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpPut("ModificarBoletin")]
-        [Authorize(Roles = "Admin")]
+       
         public async Task<IActionResult> ModificarBoletin([FromBody] Boletin boletin)
         {
             var result = await _marketingService.ModificarBoletinAsync(boletin);
@@ -44,7 +44,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpDelete("EliminarBoletin/{id}")]
-        [Authorize(Roles = "Admin")]
+       
         public async Task<IActionResult> EliminarBoletin(int id)
         {
             var success = await _marketingService.EliminarBoletinAsync(id);
