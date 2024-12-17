@@ -1,53 +1,54 @@
-﻿using Aplicacion.DataBase;
-using Dominio.Repositorios;
+﻿using Aplicacion.Interfaces;
 using Dominio.Entidades;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Dominio.Repositorios;
 
-namespace Infraestructura.Inventario
+namespace Aplicacion.Servicios
 {
-    public class InventarioRepository : IInventarioRepository
+    public class InventarioService : IInventarioService
     {
-        private readonly DatabaseContext _context;
+        private readonly IInventarioRepository _inventarioRepository;
 
-        public InventarioRepository(DatabaseContext context)
+        // Constructor que recibe el repositorio mediante inyección de dependencias
+        public InventarioService(IInventarioRepository inventarioRepository)
         {
-            _context = context;
+            _inventarioRepository = inventarioRepository;
         }
 
+        // Método para obtener todos los elementos del inventario
         public async Task<IEnumerable<Inventario>> GetAllAsync()
         {
-            return await _context.Inventarios.ToListAsync();
+            return await _inventarioRepository.GetAllAsync();
         }
 
+        // Método para obtener un elemento del inventario por ID
         public async Task<Inventario> GetByIdAsync(int id)
         {
-            return await _context.Inventarios.FindAsync(id);
+            return await _inventarioRepository.GetByIdAsync(id);
         }
 
-        public async Task AddAsync(Inventario inventario)
+        // Método para obtener elementos del inventario por categoría
+        public async Task<IEnumerable<Inventario>> GetByCategoriaAsync(string categoria)
         {
-            await _context.Inventarios.AddAsync(inventario);
-            await _context.SaveChangesAsync();
+            return await _inventarioRepository.GetByCategoriaAsync(categoria);
         }
 
-        public async Task UpdateAsync(Inventario inventario)
+        // Método para agregar un nuevo elemento al inventario
+        public async Task AddAsync(Inventario producto)
         {
-            _context.Inventarios.Update(inventario);
-            await _context.SaveChangesAsync();
+            await _inventarioRepository.AddAsync(producto);
         }
 
+        // Método para actualizar un elemento del inventario
+        public async Task UpdateAsync(Inventario producto)
+        {
+            await _inventarioRepository.UpdateAsync(producto);
+        }
+
+        // Método para eliminar un elemento del inventario por ID
         public async Task DeleteAsync(int id)
         {
-            var entity = await _context.Inventarios.FindAsync(id);
-            if (entity != null)
-            {
-                _context.Inventarios.Remove(entity);
-                await _context.SaveChangesAsync();
-            }
+            await _inventarioRepository.DeleteAsync(id);
         }
     }
 }
+
