@@ -1,6 +1,4 @@
-﻿using Aplicacion.DataBase;
-using Aplicacion.Extensiones;
-using Microsoft.EntityFrameworkCore;
+﻿using Aplicacion.Extensiones;
 using Microsoft.OpenApi.Models;
 using System.Text.Json;
 

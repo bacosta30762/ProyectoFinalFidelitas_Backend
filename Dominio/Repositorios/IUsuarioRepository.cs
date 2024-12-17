@@ -20,5 +20,6 @@ namespace Dominio.Interfaces
         Task<List<Usuario>> ObtenerTodosAsync();
         Task<string?> ObtenerCorreoPorIdAsync(string id);
         Task<string?> ObtenerNombrePorIdAsync(string id);
+        Task<Usuario> ObtenerPorIdAsync(string usuarioId);
     }
 }

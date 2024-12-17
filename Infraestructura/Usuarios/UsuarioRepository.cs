@@ -122,5 +122,11 @@ namespace Aplicacion.Usuarios
             return (await _context.Usuarios.FindAsync(id))?.Nombre;
         }
 
+        public async Task<Usuario> ObtenerPorIdAsync(string usuarioId)
+        {
+            return await _context.Usuarios
+                .FirstOrDefaultAsync(u => u.Id == usuarioId);
+        }
+
     }
 }

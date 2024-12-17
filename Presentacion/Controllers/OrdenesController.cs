@@ -158,5 +158,18 @@ namespace Presentacion.Controllers
                 return BadRequest(new { mensaje = ex.Message });
             }
         }
+
+        [HttpPost("crear-orden-admin")]
+        [Authorize(Roles = "Admin")] 
+        public async Task<IActionResult> CrearOrdenPorAdmin([FromBody] CrearOrdenAdminDto dto)
+        {
+            var resultado = await _ordenService.CrearOrdenPorAdminAsync(dto);
+            if (!resultado.FueExitoso)
+            {
+                return BadRequest(resultado.Errores);
+            }
+
+            return Ok(new { mensaje = "Orden creada exitosamente." });
+        }
     }
 }

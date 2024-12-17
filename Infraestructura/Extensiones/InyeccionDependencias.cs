@@ -6,6 +6,7 @@ using Aplicacion.Usuarios;
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using Dominio.Repositorios;
+using Infraestructura.Comentarios;
 using Infraestructura.Marketing;
 using Infraestructura.Mecanicos;
 using Infraestructura.Ordenes;
@@ -32,14 +33,14 @@ namespace Aplicacion.Extensiones
             services.AddScoped<IOrdenRepository, OrdenRepository>();
             services.AddScoped<IMecanicoRepository, MecanicoRepository>();
             services.AddScoped<IMotorDePlantillas, MotorDePlantillas>();
+            services.AddScoped<IComentarioRepository, ComentarioRepository>();
 
             services.AddScoped<IBoletinRepository, BoletinRepository>();
             services.AddScoped<IResenaRepository, ResenaRepository>();
             services.AddScoped<ISuscripcionRepository, SuscripcionRepository>();
             services.AddScoped<IMarketingService, MarketingService>();
 
-
-            //services.AddIdentityCore<Usuario, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
+            services.AddIdentity<Usuario, IdentityRole>().AddEntityFrameworkStores<DatabaseContext>().AddDefaultTokenProviders();
 
             services.AddAuthentication(options =>
             {

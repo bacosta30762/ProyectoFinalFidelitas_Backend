@@ -15,6 +15,8 @@ namespace Aplicacion.DataBase
         public DbSet<Resena> Resenas { get; set; }
         public DbSet<Suscripcion> Suscripciones { get; set; }
         public DbSet<DiaBloqueado> DiasBloqueados { get; set; }
+        public DbSet<Comentario> Comentarios { get; set; }
+
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
                     : base(options)
         {

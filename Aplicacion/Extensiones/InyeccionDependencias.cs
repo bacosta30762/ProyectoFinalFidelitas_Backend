@@ -17,6 +17,7 @@ namespace Aplicacion.Extensiones
             services.AddScoped<IJwtService, JwtService>();
             services.AddScoped<IOrdenService, OrdenService>();
             services.AddScoped<IMecanicoService, MecanicoService>();
+            services.AddScoped<IComentariosService, ComentariosService>();
         }
     }
 }

@@ -225,5 +225,70 @@ namespace Aplicacion.Servicios
             await _ordenRepository.DesbloquearDiaAsync(dia);
         }
 
+        public async Task<Resultado> CrearOrdenPorAdminAsync(CrearOrdenAdminDto dto)
+        {
+            // Verificar si el ClienteId proporcionado es válido
+            var usuarioExistente = await _usuariosRepository.ObtenerPorIdAsync(dto.ClienteId);
+            if (usuarioExistente == null)
+            {
+                return Resultado.Fallido(new[] { "El usuario seleccionado no existe." });
+            }
+
+            // Verificar la disponibilidad del mecánico
+            var mecanicoDisponible = await _ordenRepository.ObtenerMecanicoDisponibleAsync(dto.ServicioId, dto.Dia, dto.Hora);
+            if (mecanicoDisponible == null)
+            {
+                return Resultado.Fallido(new[] { "No hay mecánicos disponibles para la hora elegida." });
+            }
+
+            // Crear la orden
+            var orden = new Orden
+            {
+                Hora = dto.Hora,
+                Dia = dto.Dia,
+                MecanicoAsignadoId = mecanicoDisponible,
+                Estado = "Pendiente",
+                PlacaVehiculo = dto.PlacaVehiculo,
+                ClienteId = dto.ClienteId,
+                ServicioId = dto.ServicioId,
+            };
+
+            var correoMecanico = await _usuariosRepository.ObtenerCorreoPorIdAsync(mecanicoDisponible);
+
+            await _ordenRepository.CrearAsync(orden);
+
+            // Generar notificación para el usuario seleccionado
+            var notificacionUsuario = new Notificacion
+            (
+                usuarioExistente.Nombre ?? "Estimado Usuario",
+                "Confirmación de la cita",
+                GeneradorMensajes.ConfirmacionCitaUsuario(new CrearOrdenDto(
+                    dto.ServicioId,
+                    dto.PlacaVehiculo,
+                    dto.Hora,
+                    dto.Dia
+                ))
+            );
+
+            // Generar notificación para el mecánico asignado
+            var notificacionMecanico = new Notificacion
+            (
+                await _usuariosRepository.ObtenerNombrePorIdAsync(mecanicoDisponible) ?? "Estimado empleado",
+                "Confirmación de servicio",
+                GeneradorMensajes.ConfirmacionCitaMecanico(new CrearOrdenDto(
+                    dto.ServicioId,
+                    dto.PlacaVehiculo,
+                    dto.Hora,
+                    dto.Dia
+                ))
+            );
+
+            // Enviar correos
+            await _enviadorCorreos.EnviarNotificacionAsync(usuarioExistente.Email, notificacionUsuario);
+            await _enviadorCorreos.EnviarNotificacionAsync(correoMecanico, notificacionMecanico);
+
+            return Resultado.Exitoso();
+        }
+
     }
 }

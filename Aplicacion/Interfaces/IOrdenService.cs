@@ -9,6 +9,7 @@ namespace Aplicacion.Interfaces
         Task<Resultado> AsignarMecanicoAsync(int numeroOrden, string mecanicoId);
         Task BloquearDiaAsync(BloquearDiaDto dto);
         Task<Resultado> CrearOrdenAsync(CrearOrdenDto dto);
+        Task<Resultado> CrearOrdenPorAdminAsync(CrearOrdenAdminDto dto);
         Task DesbloquearDiaAsync(BloquearDiaDto dto);
         Task EliminarOrdenPorIdAsync(int id);
         Task<Resultado<List<ListarOrdenMecanicoDto>>> ListarOrdenesPorMecanicoAsync(string mecanicoId);
