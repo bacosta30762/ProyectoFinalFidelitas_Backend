@@ -46,20 +46,23 @@ namespace Infraestructura.Ordenes
 
         public async Task<string?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora)
         {
-            var mecanicosdelServicio = await _context.Mecanicos
+            // Obtener los mecánicos que pueden realizar el servicio solicitado
+            var mecanicosDelServicio = await _context.Mecanicos
                 .Where(m => m.Servicios.Any(s => s.Id == idServicio))
                 .Select(m => m.UsuarioId)
                 .ToListAsync();
 
-            // Verificar si hay algún mecánico disponible en esta hora
+            // Obtener los mecánicos ocupados en la fecha y hora especificadas
             var mecanicosOcupados = await _context.Ordenes
-                .Where(o => o.ServicioId == idServicio && o.Dia == dia && o.Hora == hora)
-                .Select(o => o.MecanicoAsignadoId).ToListAsync();
+                .Where(o => o.Dia == dia && o.Hora == hora)
+                .Select(o => o.MecanicoAsignadoId)
+                .ToListAsync();
 
-            var mecanicosDisponibles = mecanicosdelServicio.Except(mecanicosOcupados);
+            // Excluir los mecánicos ocupados (ya sea con el mismo servicio o con otros)
+            var mecanicosDisponibles = mecanicosDelServicio.Except(mecanicosOcupados);
 
+            // Retornar el primer mecánico disponible, o null si no hay ninguno
             return mecanicosDisponibles.FirstOrDefault();
-
         }
 
         public async Task<Orden?> ObtenerOrdenPorNumeroAsync(int numeroOrden)
@@ -84,7 +87,7 @@ namespace Infraestructura.Ordenes
             var horas = Enumerable.Range(horaInicio, horaFin - horaInicio + 1).ToList();
 
             // Obtener los IDs de los mecánicos que pueden atender el servicio solicitado
-            var mecanicosdelServicio = await _context.Mecanicos
+            var mecanicosDelServicio = await _context.Mecanicos
                 .Where(m => m.Servicios.Any(s => s.Id == servicioId))
                 .Select(m => m.UsuarioId)
                 .ToListAsync();
@@ -93,13 +96,16 @@ namespace Infraestructura.Ordenes
 
             foreach (var hora in horas)
             {
-                // Verificar si hay algún mecánico disponible en esta hora
+                // Obtener los mecánicos ocupados en esta hora con cualquier servicio
                 var mecanicosOcupados = await _context.Ordenes
-                    .Where(o => o.ServicioId == servicioId && o.Dia == dia && o.Hora == hora)
-                    .Select(o => o.MecanicoAsignadoId).ToListAsync();
+                    .Where(o => o.Dia == dia && o.Hora == hora)
+                    .Select(o => o.MecanicoAsignadoId)
+                    .ToListAsync();
 
-                var mecanicosDisponibles = mecanicosdelServicio.Except(mecanicosOcupados);
+                // Determinar los mecánicos disponibles que pueden atender este servicio
+                var mecanicosDisponibles = mecanicosDelServicio.Except(mecanicosOcupados);
 
+                // Si hay al menos un mecánico disponible, agregar la hora como disponible
                 if (mecanicosDisponibles.Any())
                 {
                     horasDisponibles.Add(hora);
