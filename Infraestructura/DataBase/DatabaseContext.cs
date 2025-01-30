@@ -53,6 +53,15 @@ namespace Aplicacion.DataBase
                  .WithMany()
                  .HasForeignKey(o => o.MecanicoAsignadoId)
                  .OnDelete(DeleteBehavior.SetNull);
+
+            /*// Configuración del mapeo para el campo Dia en Azure de SQL
+            modelBuilder.Entity<Orden>()
+                .Property(o => o.Dia)
+                .HasConversion(
+                    dia => dia.ToDateTime(TimeOnly.MinValue),  // De DateOnly a DateTime
+                    dateTime => DateOnly.FromDateTime(dateTime) // De DateTime a DateOnly
+                )
+                .HasColumnType("date"); // Mapea al tipo DATE en SQL Server*/
         }
     }
 }
