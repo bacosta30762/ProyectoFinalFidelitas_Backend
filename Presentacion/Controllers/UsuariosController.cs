@@ -136,6 +136,7 @@ namespace Presentacion.Controllers
         }
 
         [HttpGet("lista-usuarios")]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> ObtenerUsuarios()
         {
             var usuarios = await _usuariosService.ObtenerUsuariosAsync();
