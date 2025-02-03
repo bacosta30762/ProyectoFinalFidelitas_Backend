@@ -171,5 +171,18 @@ namespace Presentacion.Controllers
 
             return Ok(new { mensaje = "Orden creada exitosamente." });
         }
+
+        [HttpPut("actualizar-estado")]
+        public async Task<IActionResult> ActualizarEstado([FromBody] ActualizarEstadoOrdenDto dto)
+        {
+            var resultado = await _ordenService.ActualizarEstadoOrdenAsync(dto);
+
+            if (resultado.FueExitoso)
+            {
+                return Ok(new { Mensaje = "Estado de la orden actualizado correctamente." });
+            }
+
+            return BadRequest(new { resultado.Errores });
+        }
     }
 }

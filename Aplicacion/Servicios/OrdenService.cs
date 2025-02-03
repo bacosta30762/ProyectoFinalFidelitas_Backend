@@ -290,5 +290,17 @@ namespace Aplicacion.Servicios
             return Resultado.Exitoso();
         }
 
+        public async Task<Resultado> ActualizarEstadoOrdenAsync(ActualizarEstadoOrdenDto dto)
+        {
+            var orden = await _ordenRepository.ObtenerPorNumeroAsync(dto.NumeroOrden);
+            if (orden == null)
+            {
+                return Resultado.Fallido(new[] { "Orden no encontrada." });
+            }
+            orden.Estado = dto.Estado;
+            await _ordenRepository.ActualizarAsync(orden);
+            return Resultado.Exitoso();
+        }
+
     }
 }

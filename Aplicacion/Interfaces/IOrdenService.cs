@@ -6,6 +6,7 @@ namespace Aplicacion.Interfaces
 {
     public interface IOrdenService
     {
+        Task<Resultado> ActualizarEstadoOrdenAsync(ActualizarEstadoOrdenDto dto);
         Task<Resultado> AsignarMecanicoAsync(int numeroOrden, string mecanicoId);
         Task BloquearDiaAsync(BloquearDiaDto dto);
         Task<Resultado> CrearOrdenAsync(CrearOrdenDto dto);
