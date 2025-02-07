@@ -90,21 +90,6 @@ public class Startup
             app.UseSwaggerUI();
         }
 
-        // Middleware para manejar solicitudes OPTIONS (Preflight)
-        /*app.Use(async (context, next) =>
-         {
-             if (context.Request.Method == HttpMethods.Options)
-             {
-                 context.Response.Headers.Add("Access-Control-Allow-Origin", "https://bacosta30762.github.io");
-                 context.Response.Headers.Add("Access-Control-Allow-Methods", "POST, GET, OPTIONS");
-                 context.Response.Headers.Add("Access-Control-Allow-Headers", "Content-Type, Authorization");
-                 context.Response.StatusCode = StatusCodes.Status204NoContent;
-                 return;
-             }
-
-             await next();
-         });*/
-
         app.UseStaticFiles();
 
         app.UseCors("PermitirFrontend"); // Aplicar política de CORS

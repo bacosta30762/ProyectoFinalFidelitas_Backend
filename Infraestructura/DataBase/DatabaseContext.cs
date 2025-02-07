@@ -16,6 +16,10 @@ namespace Aplicacion.DataBase
         public DbSet<Suscripcion> Suscripciones { get; set; }
         public DbSet<DiaBloqueado> DiasBloqueados { get; set; }
         public DbSet<Comentario> Comentarios { get; set; }
+        public DbSet<Articulo> Articulos { get; set; }
+        public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Ingreso> Ingresos { get; set; }
+        public DbSet<Egreso> Egresos { get; set; }
 
         public DatabaseContext(DbContextOptions<DatabaseContext> options)
                     : base(options)

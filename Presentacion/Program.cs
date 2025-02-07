@@ -10,6 +10,7 @@ using (var scope = app.Services.CreateScope())
 {
     await RoleSeeder.SeedRolesAsync(scope.ServiceProvider);
     await ServicioSeeder.SeedServiciosAsync(scope.ServiceProvider);
+    await CategoriaSeeder.SeedCategoriasAsync(scope.ServiceProvider);
 }
 
 // Configuración del pipeline

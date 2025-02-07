@@ -1,6 +1,5 @@
 ﻿using Aplicacion.DataBase;
 using Dominio.Entidades;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 
 public static class ServicioSeeder

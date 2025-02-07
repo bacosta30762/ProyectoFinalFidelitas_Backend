@@ -18,6 +18,11 @@ namespace Aplicacion.Extensiones
             services.AddScoped<IOrdenService, OrdenService>();
             services.AddScoped<IMecanicoService, MecanicoService>();
             services.AddScoped<IComentariosService, ComentariosService>();
+            services.AddScoped<IArticuloService, ArticuloService>();
+            services.AddScoped<ICategoriaService, CategoriaService>();
+            services.AddScoped<IEgresoService, EgresoService>();
+            services.AddScoped<IIngresoService, IngresoService>();
+            services.AddScoped<IReporteFinancieroService, ReporteFinancieroService>();
         }
     }
 }
