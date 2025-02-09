@@ -43,6 +43,24 @@ namespace Infraestructura.Comentarios
             _context.Comentarios.Remove(comentario);
             await _context.SaveChangesAsync();
         }
+
+        public async Task<List<Comentario>> ObtenerTodosAsync()
+        {
+            return await _context.Comentarios
+                .Include(c => c.Usuario) // Para incluir el nombre del usuario
+                .ToListAsync();
+        }
+
+        public async Task<Comentario> ObtenerComentarioPorIdAsync(int id)
+        {
+            return await _context.Comentarios.FindAsync(id);
+        }
+
+        public async Task ActualizarComentarioAsync(Comentario comentario)
+        {
+            _context.Comentarios.Update(comentario);
+            await _context.SaveChangesAsync();
+        }
     }
 }
 

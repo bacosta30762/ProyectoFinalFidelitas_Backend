@@ -1,5 +1,6 @@
 ﻿using Aplicacion.Interfaces;
 using Aplicacion.Ordenes;
+using Aplicacion.Usuarios.Dtos;
 using Dominio.Entidades;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -51,6 +52,20 @@ namespace Presentacion.Controllers
         {
             var comentarios = await _comentariosService.ObtenerComentariosPorUsuarioAsync(usuarioId);
             return Ok(comentarios);
+        }
+
+        [HttpGet("obtenercomentarios")]
+        public async Task<IActionResult> ObtenerTodosLosComentarios()
+        {
+            var comentarios = await _comentariosService.ObtenerTodosLosComentariosAsync();
+            return Ok(comentarios);
+        }
+
+        [HttpPost("responder/{id}")]
+        public async Task<IActionResult> ResponderComentario(int id, [FromBody] ResponderComentarioDto respuestaDto)
+        {
+            await _comentariosService.ResponderComentarioAsync(id, respuestaDto);
+            return Ok();
         }
     }
 }

@@ -8,5 +8,6 @@
         public string UsuarioId { get; set; }  // Relación con el Usuario (IdentityUser)
         public Usuario Usuario { get; set; }  // Relación con la entidad Usuario
         public DateTime FechaCreacion { get; set; }
+
     }
 }

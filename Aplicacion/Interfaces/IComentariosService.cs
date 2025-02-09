@@ -1,4 +1,5 @@
 ﻿using Aplicacion.Ordenes;
+using Aplicacion.Usuarios.Dtos;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,5 +14,7 @@ namespace Aplicacion.Interfaces
         Task EditarComentarioAsync(int id, CrearComentarioDto comentarioDto);
         Task EliminarComentarioAsync(int id);
         Task<List<ComentarioDto>> ObtenerComentariosPorUsuarioAsync(string usuarioId);
+        Task<List<ComentarioDto>> ObtenerTodosLosComentariosAsync();
+        Task ResponderComentarioAsync(int id, ResponderComentarioDto respuestaDto);
     }
 }

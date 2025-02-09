@@ -9,5 +9,8 @@ namespace Dominio.Repositorios
         Task<List<Comentario>> ObtenerPorUsuarioAsync(string usuarioId);
         Task ActualizarAsync(Comentario comentario);
         Task EliminarAsync(Comentario comentario);
+        Task<List<Comentario>> ObtenerTodosAsync();
+        Task<Comentario> ObtenerComentarioPorIdAsync(int id);
+        Task ActualizarComentarioAsync(Comentario comentario);
     }
 }

@@ -1,8 +1,10 @@
 ﻿using Aplicacion.Interfaces;
 using Aplicacion.Ordenes;
+using Aplicacion.Usuarios.Dtos;
 using Dominio.Entidades;
 using Dominio.Interfaces;
 using Dominio.Repositorios;
+using Microsoft.EntityFrameworkCore;
 
 namespace Aplicacion.Servicios
 {
@@ -67,9 +69,33 @@ namespace Aplicacion.Servicios
                 Texto = c.Texto,
                 Puntuacion = c.Puntuacion,
                 UsuarioId = c.UsuarioId,
-                NombreUsuario = c.Usuario?.Nombre,  // Asegúrate de que la entidad Usuario tenga el campo Nombre
+                NombreUsuario = c.Usuario?.Nombre, 
                 FechaCreacion = c.FechaCreacion
             }).ToList();
+        }
+
+        public async Task<List<ComentarioDto>> ObtenerTodosLosComentariosAsync()
+        {
+            var comentarios = await _comentarioRepository.ObtenerTodosAsync();
+
+            return comentarios.Select(c => new ComentarioDto
+            {
+                Id = c.Id,
+                Texto = c.Texto,
+                Puntuacion = c.Puntuacion,
+                UsuarioId = c.UsuarioId,
+                NombreUsuario = c.Usuario?.Nombre,
+                FechaCreacion = c.FechaCreacion
+            }).ToList();
+        }
+
+        public async Task ResponderComentarioAsync(int id, ResponderComentarioDto respuestaDto)
+        {
+            var comentario = await _comentarioRepository.ObtenerPorIdAsync(id);
+            if (comentario == null) throw new Exception("Comentario no encontrado");
+
+            comentario.Texto = respuestaDto.Respuesta;
+            await _comentarioRepository.ActualizarComentarioAsync(comentario);
         }
     }
 }
