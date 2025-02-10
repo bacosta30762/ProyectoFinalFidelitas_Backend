@@ -9,6 +9,7 @@ namespace Dominio.Repositorios
         Task CrearAsync(Orden orden);
         Task DesbloquearDiaAsync(DateOnly dia);
         Task EliminarAsync(Orden orden);
+        Task<List<DiaBloqueado>> ObtenerDiasBloqueadosAsync();
         Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia);
         Task<string?> ObtenerMecanicoDisponibleAsync(int idServicio, DateOnly dia, int hora);
         Task<List<Orden>> ObtenerOrdenesPorClienteId(string clienteId);

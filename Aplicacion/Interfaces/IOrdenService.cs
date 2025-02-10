@@ -16,6 +16,7 @@ namespace Aplicacion.Interfaces
         Task<Resultado<List<ListarOrdenMecanicoDto>>> ListarOrdenesPorMecanicoAsync(string mecanicoId);
         Task<Resultado<List<ListarOrdenDto>>> listarOrdenesUsuarioAsync(string usuarioId);
         Task<Resultado<List<ListarOrdenDto>>> ListarTodasLasOrdenesAsync();
+        Task<List<string>> ObtenerDiasBloqueadosAsync();
         Task<List<int>> ObtenerHorasDisponiblesAsync(int servicioId, DateOnly dia);
     }
 }

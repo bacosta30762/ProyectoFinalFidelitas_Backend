@@ -1,7 +1,9 @@
-﻿using Aplicacion.Interfaces;
+﻿using Aplicacion.DataBase;
+using Aplicacion.Interfaces;
 using Aplicacion.Usuarios.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace Presentacion.Controllers
@@ -183,6 +185,20 @@ namespace Presentacion.Controllers
             }
 
             return BadRequest(new { resultado.Errores });
+        }
+
+        [HttpGet("obtener-dias-bloqueados")]
+        public async Task<IActionResult> ObtenerDiasBloqueados()
+        {
+            try
+            {
+                var diasBloqueados = await _ordenService.ObtenerDiasBloqueadosAsync();
+                return Ok(diasBloqueados);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { mensaje = ex.Message });
+            }
         }
     }
 }

@@ -302,5 +302,11 @@ namespace Aplicacion.Servicios
             return Resultado.Exitoso();
         }
 
+        public async Task<List<string>> ObtenerDiasBloqueadosAsync()
+        {
+            var diasBloqueados = await _ordenRepository.ObtenerDiasBloqueadosAsync();
+            return diasBloqueados.Select(d => d.Dia.ToString("yyyy-MM-dd")).ToList();
+        }
+
     }
 }

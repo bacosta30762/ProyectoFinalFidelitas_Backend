@@ -172,6 +172,10 @@ namespace Infraestructura.Ordenes
                 await _context.SaveChangesAsync();
             }
         }
+        public async Task<List<DiaBloqueado>> ObtenerDiasBloqueadosAsync()
+        {
+            return await _context.DiasBloqueados.ToListAsync();
+        }
 
     }
 }
