@@ -12,6 +12,7 @@ namespace Aplicacion.Interfaces
     public interface IMecanicoService
     {
         Task<Resultado> AsignarServiciosAsync(string usuarioId, List<int> servicioIds);
+        Task<List<ListarMecanicoDto>> ObtenerMecanicosAsync();
         Task<List<MecanicoDto>> ObtenerMecanicosDisponiblesAsync();
     }
 }

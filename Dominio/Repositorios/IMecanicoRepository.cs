@@ -10,6 +10,7 @@ namespace Dominio.Repositorios
         Task<Resultado> AsignarServiciosAMecanicoAsync(string usuarioId, List<int> servicioIds);
         Task<Resultado> EliminarAsync(string usuarioId);
         Task<Mecanico?> ObtenerMecanicoPorIdAsync(string usuarioId);
+        Task<List<Mecanico>> ObtenerMecanicosAsync();
         Task<List<Mecanico?>> ObtenerMecanicosDisponiblesAsync();
     }
 }

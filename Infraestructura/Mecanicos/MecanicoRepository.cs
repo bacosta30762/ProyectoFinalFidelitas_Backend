@@ -113,5 +113,14 @@ namespace Infraestructura.Mecanicos
                 return Resultado.Fallido(new[] { "Error al eliminar mecánico: " + ex.Message });
             }
         }
+
+        public async Task<List<Mecanico>> ObtenerMecanicosAsync()
+        {
+            return await _context.Mecanicos
+                .Include(m => m.Usuario)
+                .Include(m => m.Servicios)
+                .ToListAsync();
+        }
+
     }
 }

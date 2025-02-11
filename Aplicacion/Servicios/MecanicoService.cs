@@ -35,5 +35,19 @@ namespace Aplicacion.Servicios
             }).ToList();
         }
 
+        public async Task<List<ListarMecanicoDto>> ObtenerMecanicosAsync()
+        {
+            var mecanicos = await _mecanicoRepository.ObtenerMecanicosAsync();
+
+            return mecanicos.Select(m => new ListarMecanicoDto
+            {
+                Cedula = m.Usuario.Cedula,
+                Nombre = m.Usuario.Nombre,
+                Apellidos = m.Usuario.Apellidos,
+                Servicios = m.Servicios.Select(s => s.Descripcion).ToList(),
+                UsuarioId = m.Usuario.Id
+            }).ToList();
+        }
     }
+
 }
